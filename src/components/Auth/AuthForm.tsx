@@ -222,7 +222,7 @@ const AuthForm: React.FC = () => {
           <NavLink to="/">
             <img src={Logo} alt="logo" className='m-auto w-36 md:w-40' />
           </NavLink>
-          <h2 className="text-3xl font-black text-white uppercase tracking-tighter italic">
+          <h2 className="text-3xl font-black text-white uppercase tracking-tighter ">
             {view === 'login' ? 'Bienvenido' : 'Crear Cuenta'}
           </h2>
           <p className="text-white text-xs font-bold uppercase tracking-widest">
@@ -306,7 +306,7 @@ const AuthForm: React.FC = () => {
         <div className="pt-6 border-t border-slate-800 text-center">
           <button
             onClick={handleViewChange}
-            className="text-white hover:text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] transition-colors italic"
+            className="text-white hover:text-indigo-400 text-[10px] font-black uppercase tracking-[0.2em] transition-colors "
           >
             {view === 'login' ? '¿No tienes cuenta? Regístrate' : '¿Ya tienes cuenta? Ingresa'}
           </button>

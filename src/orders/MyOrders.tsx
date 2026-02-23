@@ -58,7 +58,7 @@ const MyOrders = () => {
           <Loader2 className="animate-spin text-indigo-500 relative z-10" size={40} />
           <div className="absolute inset-0 bg-indigo-500/20 blur-xl rounded-full"></div>
         </div>
-        <p className="text-slate-500 font-black uppercase italic tracking-widest mt-6 animate-pulse text-xs">
+        <p className="text-slate-500 font-black uppercase  tracking-widest mt-6 animate-pulse text-xs">
           Cargando pedidos...
         </p>
       </div>
@@ -92,7 +92,7 @@ const MyOrders = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white uppercase italic tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-black text-white uppercase  tracking-tight">
             Mis Pedidos
           </h1>
           <p className="text-sm text-slate-400 font-bold mt-1">
@@ -117,7 +117,7 @@ const MyOrders = () => {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-lg font-black text-white uppercase italic">
+                    <h3 className="text-lg font-black text-white uppercase ">
                       Pedido #{order.id}
                     </h3>
                     <div className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full ${statusInfo?.bgColor} ${statusInfo?.borderColor} border`}>

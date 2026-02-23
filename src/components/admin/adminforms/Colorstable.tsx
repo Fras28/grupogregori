@@ -30,7 +30,7 @@ const ColorsTable = ({ colors, onEdit, showInactive = false }: ColorsTableProps)
 
   const handleRestore = (color: Color) => {
     modals.openConfirmModal({
-      title: <span className="font-black uppercase italic text-emerald-500">Reactivar Color</span>,
+      title: <span className="font-black uppercase  text-emerald-500">Reactivar Color</span>,
       children: (
         <p className="text-sm text-slate-400">
           ¿Deseas volver a activar el color <span className="text-white font-bold">"{color.name}"</span>? 
@@ -45,7 +45,7 @@ const ColorsTable = ({ colors, onEdit, showInactive = false }: ColorsTableProps)
 
   const handleDelete = (color: Color) => {
     modals.openConfirmModal({
-      title: <span className="font-black uppercase italic text-red-500">Eliminar Color</span>,
+      title: <span className="font-black uppercase  text-red-500">Eliminar Color</span>,
       children: (
         <div className="space-y-3">
           <p className="text-sm text-slate-400">
@@ -83,7 +83,7 @@ const ColorsTable = ({ colors, onEdit, showInactive = false }: ColorsTableProps)
                 {!color.hexCode && <Palette className="text-white" size={18} />}
               </div>
               <div className="flex flex-col">
-                <span className={`font-black italic uppercase text-sm ${showInactive ? 'text-slate-500 line-through' : 'text-white'}`}>
+                <span className={`font-black  uppercase text-sm ${showInactive ? 'text-slate-500 line-through' : 'text-white'}`}>
                   {info.getValue() as string}
                 </span>
                 <span className="text-[10px] text-slate-500 font-bold">

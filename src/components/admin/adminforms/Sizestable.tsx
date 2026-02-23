@@ -30,7 +30,7 @@ const SizesTable = ({ sizes, onEdit, showInactive = false }: SizesTableProps) =>
 
   const handleRestore = (size: Size) => {
     modals.openConfirmModal({
-      title: <span className="font-black uppercase italic text-emerald-500">Reactivar Talle</span>,
+      title: <span className="font-black uppercase  text-emerald-500">Reactivar Talle</span>,
       children: (
         <p className="text-sm text-slate-400">
           ¿Deseas volver a activar el talle <span className="text-white font-bold">"{size.name}"</span>? 
@@ -45,7 +45,7 @@ const SizesTable = ({ sizes, onEdit, showInactive = false }: SizesTableProps) =>
 
   const handleDelete = (size: Size) => {
     modals.openConfirmModal({
-      title: <span className="font-black uppercase italic text-red-500">Eliminar Talle</span>,
+      title: <span className="font-black uppercase  text-red-500">Eliminar Talle</span>,
       children: (
         <div className="space-y-3">
           <p className="text-sm text-slate-400">
@@ -75,7 +75,7 @@ const SizesTable = ({ sizes, onEdit, showInactive = false }: SizesTableProps) =>
               <Ruler className={showInactive ? 'text-slate-600' : 'text-indigo-400'} size={18} />
             </div>
             <div className="flex flex-col">
-              <span className={`font-black italic uppercase text-sm ${showInactive ? 'text-slate-500 line-through' : 'text-white'}`}>
+              <span className={`font-black  uppercase text-sm ${showInactive ? 'text-slate-500 line-through' : 'text-white'}`}>
                 {info.getValue() as string}
               </span>
               <span className="text-[10px] text-slate-500 font-bold">

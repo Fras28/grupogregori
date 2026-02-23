@@ -26,7 +26,7 @@ const DemoMetricsKPIs = () => {
       {/* Header */}
       <div>
         <div className="flex items-center gap-3 mb-2">
-          <h2 className="text-3xl font-black text-white italic tracking-tighter uppercase">
+          <h2 className="text-3xl font-black text-white  tracking-tighter uppercase">
             Panel de <span className="text-indigo-400">Métricas</span>
           </h2>
           <span className="px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-[9px] font-black uppercase rounded-full">

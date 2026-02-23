@@ -81,7 +81,7 @@ const Home = (): JSX.Element => {
           <h1 className="text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-[0.9] tracking-tighter mb-8">
             Seguridad
             <br />
-            <span className="text-[#E30613] italic">Industrial</span>
+            <span className="text-[#E30613] ">Industrial</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">

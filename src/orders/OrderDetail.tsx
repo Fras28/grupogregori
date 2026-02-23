@@ -69,7 +69,7 @@ const OrderDetail = () => {
           <Loader2 className="animate-spin text-indigo-500 relative z-10" size={40} />
           <div className="absolute inset-0 bg-indigo-500/20 blur-xl rounded-full"></div>
         </div>
-        <p className="text-slate-500 font-black uppercase italic tracking-widest mt-6 animate-pulse text-xs">
+        <p className="text-slate-500 font-black uppercase tracking-widest mt-6 animate-pulse text-xs">
           Cargando pedido...
         </p>
       </div>
@@ -81,7 +81,7 @@ const OrderDetail = () => {
       <div className="min-h-screen flex flex-col items-center justify-center text-center p-4">
         <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-8 max-w-md">
           <XCircle className="mx-auto text-red-500 mb-4" size={48} />
-          <h2 className="text-2xl font-black text-white uppercase italic mb-2">
+          <h2 className="text-2xl font-black text-white uppercase mb-2">
             Pedido no encontrado
           </h2>
           <p className="text-slate-400 mb-6">
@@ -112,7 +112,7 @@ const OrderDetail = () => {
           <ArrowLeft className="text-slate-400 group-hover:text-white transition-colors" size={20} />
         </button>
         <div className="flex-1">
-          <h1 className="text-2xl sm:text-3xl font-black text-white uppercase italic tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">
             Pedido #{order.id}
           </h1>
           <p className="text-sm text-slate-400 font-bold mt-1">
@@ -137,7 +137,7 @@ const OrderDetail = () => {
             <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-1">
               Estado del Pedido
             </p>
-            <p className={`text-xl font-black uppercase italic ${statusInfo?.color}`}>
+            <p className={`text-xl font-black uppercase ${statusInfo?.color}`}>
               {statusInfo?.label}
             </p>
           </div>

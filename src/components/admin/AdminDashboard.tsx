@@ -15,7 +15,6 @@ import ColorsTable from './adminforms/Colorstable';
 import ColorForm from './adminforms/Colorform';
 import OrdersTable from './OrdersTable';
 import MetricsDashboard from './MetricsDashboard';
-import Navbar from '../layout/Navbar';
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState<'metrics' | 'inventory' | 'orders' | 'categories' | 'sizes' | 'colors' | 'inactive'>('metrics');
@@ -80,7 +79,7 @@ const AdminDashboard = () => {
           <Loader2 className="animate-spin text-indigo-500 relative z-10" size={40} />
           <div className="absolute inset-0 bg-indigo-500/20 blur-xl rounded-full"></div>
         </div>
-        <p className="text-slate-500 font-black uppercase italic tracking-widest mt-6 animate-pulse text-xs">
+        <p className="text-slate-500 font-black uppercase  tracking-widest mt-6 animate-pulse text-xs">
           Accediendo al sistema...
         </p>
       </div>
@@ -95,7 +94,6 @@ const AdminDashboard = () => {
 
   return (
     <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-700 overflow-x-hidden">
-      <Navbar/>
       {/* Selector de Pestañas - Optimizado para mobile */}
       <div className="flex flex-wrap gap-2 sm:gap-3 lg:gap-4 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl sm:rounded-[2rem] w-full sm:w-fit mx-auto md:mx-0 overflow-x-auto scrollbar-hide">
         {/* ✅ Métricas */}
@@ -234,7 +232,7 @@ const AdminDashboard = () => {
                 <Tag className="text-purple-500 flex-shrink-0" size={18} />
                 <h3 className="text-[10px] sm:text-xs font-black text-white uppercase tracking-wider sm:tracking-widest">Gestión de Categorías</h3>
               </div>
-              <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase italic">
+              <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase ">
                 {categories?.length || 0} categorías
               </span>
             </div>
@@ -253,7 +251,7 @@ const AdminDashboard = () => {
                 <h3 className="text-[10px] sm:text-xs font-black text-white uppercase tracking-wider sm:tracking-widest">Gestión de Talles</h3>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase italic">
+                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase ">
                   {activeSizes.length} activos / {inactiveSizes.length} inactivos
                 </span>
                 {editingSize && (
@@ -309,7 +307,7 @@ const AdminDashboard = () => {
                 <h3 className="text-[10px] sm:text-xs font-black text-white uppercase tracking-wider sm:tracking-widest">Gestión de Colores</h3>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase italic">
+                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase ">
                   {activeColors.length} activos / {inactiveColors.length} inactivos
                 </span>
                 {editingColor && (
@@ -399,7 +397,7 @@ const AdminDashboard = () => {
                     Productos Archivados
                   </h3>
                 </div>
-                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase italic">
+                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase ">
                   {inactiveProducts.length} items desactivados
                 </span>
               </div>

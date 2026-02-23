@@ -179,7 +179,7 @@ const About = (): JSX.Element => {
             {testimonials.map((testimonial: Testimonial, index: number) => (
               <div key={index} className="bg-[#141414] p-8 relative">
                 <span className="material-symbols-outlined text-[#E30613] text-6xl absolute -top-4 -left-4 opacity-20">format_quote</span>
-                <p className="text-slate-400 italic mb-8 relative z-10">
+                <p className="text-slate-400  mb-8 relative z-10">
                   &ldquo;{testimonial.quote}&rdquo;
                 </p>
                 <div className="flex items-center space-x-4">

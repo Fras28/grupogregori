@@ -45,7 +45,7 @@ const MetricsDashboard = () => {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h2 className="text-3xl font-black text-white italic tracking-tighter uppercase mb-2">
+        <h2 className="text-3xl font-black text-white  tracking-tighter uppercase mb-2">
           Panel de <span className="text-indigo-400">Métricas</span>
         </h2>
         <p className="text-slate-400 text-sm">

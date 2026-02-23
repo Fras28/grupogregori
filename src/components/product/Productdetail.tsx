@@ -121,12 +121,12 @@ const ProductDetail = () => {
   if (!productId) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4 text-center">
-        <AlertCircle size={64} className="text-red-500 mb-4" />
+        <AlertCircle size={64} className="text-white mb-4" />
         <h2 className="text-2xl font-bold text-white mb-2">URL inválida</h2>
-        <p className="text-slate-400 mb-6">La dirección del producto no es correcta</p>
+        <p className="text-red-400 mb-6">La dirección del producto no es correcta</p>
         <button
           onClick={() => navigate('/catalogo')}
-          className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-bold transition-all"
+          className="bg-red-600 hover:bg-red-500 text-white px-6 py-3 rounded-xl font-bold transition-all"
         >
           Volver al Catálogo
         </button>
@@ -138,8 +138,8 @@ const ProductDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="relative w-20 h-20">
-          <div className="absolute inset-0 border-4 border-indigo-500/20 rounded-full"></div>
-          <div className="absolute inset-0 border-4 border-t-indigo-500 rounded-full animate-spin"></div>
+          <div className="absolute inset-0 border-4 border-red-500/20 rounded-full"></div>
+          <div className="absolute inset-0 border-4 border-t-red-500 rounded-full animate-spin"></div>
         </div>
       </div>
     );
@@ -148,12 +148,12 @@ const ProductDetail = () => {
   if (error || !product) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4 text-center">
-        <AlertCircle size={64} className="text-red-500 mb-4" />
+        <AlertCircle size={64} className="text-white mb-4" />
         <h2 className="text-2xl font-bold text-white mb-2">Producto no encontrado</h2>
-        <p className="text-slate-400 mb-6">El producto que buscas no existe o fue eliminado</p>
+        <p className="text-red-400 mb-6">El producto que buscas no existe o fue eliminado</p>
         <button
           onClick={() => navigate('/catalogo')}
-          className="bg-indigo-600 hover:bg-indigo-500 text-white px-6 py-3 rounded-xl font-bold transition-all"
+          className="bg-red-600 hover:bg-red-500 text-white px-6 py-3 rounded-xl font-bold transition-all"
         >
           Volver al Catálogo
         </button>
@@ -250,7 +250,7 @@ const ProductDetail = () => {
       <div className="w-full max-w-7xl mx-auto px-3 sm:px-4 py-4 sm:py-6 flex items-center justify-between">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors font-bold text-xs sm:text-sm"
+          className="flex items-center gap-2 text-white hover:text-lg transition-colors font-bold text-xs sm:text-sm"
         >
           <ChevronLeft size={18} className="sm:w-5 sm:h-5" />
           <span className="hidden sm:inline">Volver</span>
@@ -262,7 +262,7 @@ const ProductDetail = () => {
             disabled={isToggling}
             className={`p-2 sm:p-3 rounded-full border-2 transition-all ${isFavorite
               ? 'bg-red-500 border-red-500 text-white'
-              : 'border-slate-700 text-slate-400 hover:border-red-500 hover:text-red-500'
+              : 'border-red-700 text-white hover:border-red-500 hover:text-white'
               } ${isToggling ? 'opacity-50 cursor-not-allowed' : ''}`}
             title={isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
           >
@@ -270,7 +270,7 @@ const ProductDetail = () => {
           </button>
           <button
             onClick={handleShare}
-            className="p-2 sm:p-3 rounded-full border-2 border-slate-700 text-slate-400 hover:border-indigo-500 hover:text-indigo-500 transition-all"
+            className="p-2 sm:p-3 rounded-full border-2 border-red-700 text-white hover:border-red-500 hover:text-white transition-all"
             title="Compartir producto"
           >
             <Share2 size={18} className="sm:w-5 sm:h-5" />
@@ -295,10 +295,10 @@ const ProductDetail = () => {
                       onClick={() => setSelectedSize(size.id)}
                       disabled={!hasStock}
                       className={`px-4 py-2 rounded-lg font-bold text-sm transition-all ${selectedSize === size.id
-                          ? 'bg-indigo-600 text-white'
+                          ? 'bg-red-600 text-white'
                           : hasStock
-                            ? 'bg-slate-800 text-white hover:bg-slate-700'
-                            : 'bg-slate-900 text-slate-600 cursor-not-allowed'
+                            ? 'bg-red-800 text-white hover:bg-red-700'
+                            : 'bg-red-900 text-red-600 cursor-not-allowed'
                         }`}
                     >
                       {size.name}
@@ -324,15 +324,15 @@ const ProductDetail = () => {
                       onClick={() => setSelectedColor(color.id)}
                       disabled={!hasStock}
                       className={`px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 ${selectedColor === color.id
-                          ? 'bg-indigo-600 text-white'
+                          ? 'bg-red-600 text-white'
                           : hasStock
-                            ? 'bg-slate-800 text-white hover:bg-slate-700'
-                            : 'bg-slate-900 text-slate-600 cursor-not-allowed'
+                            ? 'bg-red-800 text-white hover:bg-red-700'
+                            : 'bg-red-900 text-red-600 cursor-not-allowed'
                         }`}
                     >
                       {color.hexCode && (
                         <div
-                          className="w-4 h-4 rounded-full border border-slate-600"
+                          className="w-4 h-4 rounded-full border border-red-600"
                           style={{ backgroundColor: color.hexCode }}
                         />
                       )}
@@ -352,8 +352,8 @@ const ProductDetail = () => {
 
             if (selectedVariant) {
               return (
-                <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-3">
-                  <p className="text-xs text-slate-400">
+                <div className="bg-red-900/50 border border-red-800 rounded-xl p-3">
+                  <p className="text-xs text-red-400">
                     Stock disponible: <span className="text-white font-bold">{selectedVariant.stock}</span>
                   </p>
                 </div>
@@ -367,7 +367,7 @@ const ProductDetail = () => {
         {/* Lado Izquierdo: Galería de Imágenes */}
         <div className="space-y-3 sm:space-y-4 w-full">
           {/* Imagen Principal con Navegación */}
-          <div className="relative aspect-square rounded-2xl sm:rounded-[2.5rem] overflow-hidden bg-slate-900 border border-slate-800 group w-full">
+          <div className="relative aspect-square rounded-2xl sm:rounded-[2.5rem] overflow-hidden bg-red-900 border border-red-800 group w-full">
             <img
               src={images[selectedImage]}
               alt={`${product.name} - Imagen ${selectedImage + 1}`}
@@ -377,7 +377,7 @@ const ProductDetail = () => {
             {/* Badges */}
             <div className="absolute top-3 sm:top-6 left-3 sm:left-6 flex flex-col gap-1.5 sm:gap-2">
               {product.isActive && (
-                <span className="bg-indigo-600 text-[9px] sm:text-[10px] font-black px-2 sm:px-3 py-1 rounded-full tracking-tighter flex items-center gap-1 shadow-lg">
+                <span className="bg-red-600 text-[9px] sm:text-[10px] font-black px-2 sm:px-3 py-1 rounded-full tracking-tighter flex items-center gap-1 shadow-lg">
                   <Sparkles size={9} className="sm:w-2.5 sm:h-2.5" /> NUEVO
                 </span>
               )}
@@ -393,19 +393,19 @@ const ProductDetail = () => {
               <>
                 <button
                   onClick={handlePrevImage}
-                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900/50 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-slate-900/70"
+                  className="absolute left-2 sm:left-4 top-1/2 -tranred-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-900/50 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-900/70"
                 >
                   <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
                 </button>
                 <button
                   onClick={handleNextImage}
-                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900/50 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-slate-900/70"
+                  className="absolute right-2 sm:right-4 top-1/2 -tranred-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-red-900/50 backdrop-blur-md flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-red-900/70"
                 >
                   <ChevronRight size={20} className="sm:w-6 sm:h-6" />
                 </button>
 
                 {/* Contador de imágenes */}
-                <div className="absolute bottom-3 sm:bottom-6 right-3 sm:right-6 bg-slate-900/50 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
+                <div className="absolute bottom-3 sm:bottom-6 right-3 sm:right-6 bg-red-900/50 backdrop-blur-md px-3 sm:px-4 py-1.5 sm:py-2 rounded-full">
                   <span className="text-xs sm:text-sm font-bold">
                     {selectedImage + 1} / {images.length}
                   </span>
@@ -422,8 +422,8 @@ const ProductDetail = () => {
                   key={idx}
                   onClick={() => setSelectedImage(idx)}
                   className={`relative min-w-[70px] sm:min-w-[80px] h-[70px] sm:h-[80px] rounded-xl overflow-hidden border-2 transition-all flex-shrink-0 ${selectedImage === idx
-                    ? 'border-indigo-500 scale-105'
-                    : 'border-slate-800 opacity-50 hover:opacity-100 hover:border-slate-600'
+                    ? 'border-red-500 scale-105'
+                    : 'border-red-800 opacity-50 hover:opacity-100 hover:border-red-600'
                     }`}
                 >
                   <img
@@ -432,7 +432,7 @@ const ProductDetail = () => {
                     className="w-full h-full object-cover"
                   />
                   {/* Badge de orden */}
-                  <div className="absolute top-1 right-1 bg-slate-900/70 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full">
+                  <div className="absolute top-1 right-1 bg-red-900/70 text-white text-[8px] font-bold px-1.5 py-0.5 rounded-full">
                     {idx + 1}
                   </div>
                 </button>
@@ -442,10 +442,10 @@ const ProductDetail = () => {
         </div>
 
         {/* Lado Derecho: Info - Optimizado para mobile */}
-        <div className="bg-slate-900/50 border border-slate-800 rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 w-full">
+        <div className="bg-red-900/50 border border-red-800 rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 w-full">
           <div className="mb-4 sm:mb-8">
             {product.category && (
-              <div className="flex items-center gap-2 text-indigo-400 mb-3 sm:mb-4">
+              <div className="flex items-center gap-2 text-white mb-3 sm:mb-4">
                 <Tag size={12} className="sm:w-3.5 sm:h-3.5" />
                 <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider sm:tracking-[0.2em]">
                   {product.category.name}
@@ -461,23 +461,23 @@ const ProductDetail = () => {
               <span className="text-3xl sm:text-4xl font-black text-white">
                 ${Number(product.price).toLocaleString()}
               </span>
-              <span className="text-slate-500 text-xs sm:text-sm font-medium">IVA incluido</span>
+              <span className="text-white text-xs sm:text-sm font-medium">IVA incluido</span>
             </div>
 
-            <p className="text-slate-400 leading-relaxed text-sm sm:text-base lg:text-lg mb-4 sm:mb-8 break-words">
+            <p className="text-white leading-relaxed text-sm sm:text-base lg:text-lg mb-4 sm:mb-8 break-words">
               {product.description || 'Sin descripción disponible para este producto profesional.'}
             </p>
           </div>
 
           {/* Selector de Cantidad y Botón */}
-          <div className="bg-slate-900/50 border border-slate-800 rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 w-full">
+          <div className="bg-red-900/50 border border-red-800 rounded-2xl sm:rounded-[2rem] p-4 sm:p-6 lg:p-8 space-y-4 sm:space-y-6 w-full">
             <div className="flex items-center justify-between gap-4">
-              <span className="font-bold text-[10px] sm:text-sm tracking-wider sm:tracking-widest text-slate-400 whitespace-nowrap">CANTIDAD</span>
-              <div className="flex items-center gap-3 sm:gap-6 rounded-full p-1.5 sm:p-2 border border-slate-800">
+              <span className="font-bold text-[10px] sm:text-sm tracking-wider sm:tracking-widest text-white whitespace-nowrap">CANTIDAD</span>
+              <div className="flex items-center gap-3 sm:gap-6 rounded-full p-1.5 sm:p-2 border border-red-800">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   disabled={quantity <= 1 || isOutOfStock}
-                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-slate-900 disabled:opacity-20 transition-colors"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-red-900 disabled:opacity-20 transition-colors"
                 >
                   <Minus size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </button>
@@ -485,7 +485,7 @@ const ProductDetail = () => {
                 <button
                   onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
                   disabled={quantity >= product.stock || isOutOfStock}
-                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-slate-900 disabled:opacity-20 transition-colors"
+                  className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center hover:bg-red-900 disabled:opacity-20 transition-colors"
                 >
                   <Plus size={16} className="sm:w-[18px] sm:h-[18px]" />
                 </button>
@@ -510,10 +510,10 @@ const ProductDetail = () => {
                 disabled={!hasStock}
                 className={`px-4 py-2 rounded-lg font-bold text-sm transition-all ${
                   selectedSize === size.id
-                    ? 'bg-indigo-600 text-white'
+                    ? 'bg-red-600 text-white'
                     : hasStock
-                    ? 'bg-slate-800 text-white hover:bg-slate-700'
-                    : 'bg-slate-900 text-slate-600 cursor-not-allowed'
+                    ? 'bg-red-800 text-white hover:bg-red-700'
+                    : 'bg-red-900 text-red-600 cursor-not-allowed'
                 }`}
               >
                 {size.name}
@@ -540,15 +540,15 @@ const ProductDetail = () => {
                 disabled={!hasStock}
                 className={`px-4 py-2 rounded-lg font-bold text-sm transition-all flex items-center gap-2 ${
                   selectedColor === color.id
-                    ? 'bg-indigo-600 text-white'
+                    ? 'bg-red-600 text-white'
                     : hasStock
-                    ? 'bg-slate-800 text-white hover:bg-slate-700'
-                    : 'bg-slate-900 text-slate-600 cursor-not-allowed'
+                    ? 'bg-red-800 text-white hover:bg-red-700'
+                    : 'bg-red-900 text-red-600 cursor-not-allowed'
                 }`}
               >
                 {color.hexCode && (
                   <div 
-                    className="w-4 h-4 rounded-full border border-slate-600"
+                    className="w-4 h-4 rounded-full border border-red-600"
                     style={{ backgroundColor: color.hexCode }}
                   />
                 )}
@@ -568,8 +568,8 @@ const ProductDetail = () => {
       
       if (selectedVariant) {
         return (
-          <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-3">
-            <p className="text-xs text-slate-400">
+          <div className="bg-red-900/50 border border-red-800 rounded-xl p-3">
+            <p className="text-xs text-red-400">
               Stock disponible: <span className="text-white font-bold">{selectedVariant.stock}</span>
             </p>
           </div>
@@ -583,7 +583,7 @@ const ProductDetail = () => {
               <button
                 onClick={handleAddToCart}
                 disabled={isOutOfStock}
-                className="w-full bg-indigo-600 text-white py-4 sm:py-6 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm flex items-center justify-center gap-2 sm:gap-3 hover:bg-indigo-500 transition-all disabled:bg-slate-800 disabled:text-slate-500 group"
+                className="w-full bg-red-600 border-2 text-white py-4 sm:py-6 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm flex items-center justify-center gap-2 sm:gap-3 hover:bg-red-500 transition-all disabled:bg-red-800 disabled:text-white group"
               >
                 {isOutOfStock ? (
                   <>
@@ -600,17 +600,17 @@ const ProductDetail = () => {
             </div>
 
             {/* Beneficios - Stack en mobile, grid en desktop */}
-            <div className="grid grid-cols-1 sm:grid-cols-1 gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-slate-800">
-              <div className="flex items-center gap-2 sm:gap-3 text-slate-400 justify-center sm:justify-start">
-                <Truck size={16} className="sm:w-[18px] sm:h-[18px] text-indigo-500 flex-shrink-0" />
+            <div className="grid grid-cols-1 sm:grid-cols-1 gap-3 sm:gap-4 pt-3 sm:pt-4 border-t border-red-800">
+              <div className="flex items-center gap-2 sm:gap-3 text-white justify-center sm:justify-start">
+                <Truck size={16} className="sm:w-[18px] sm:h-[18px] text-white flex-shrink-0" />
                 <span className="text-[9px] sm:text-[10px] font-bold whitespace-nowrap">ENVÍO GRATIS superando los $90.000</span>
               </div>
-              <div className="flex items-center gap-2 sm:gap-3 text-slate-400 justify-center sm:justify-start">
-                <Shield size={16} className="sm:w-[18px] sm:h-[18px] text-indigo-500 flex-shrink-0" />
+              <div className="flex items-center gap-2 sm:gap-3 text-white justify-center sm:justify-start">
+                <Shield size={16} className="sm:w-[18px] sm:h-[18px] text-white flex-shrink-0" />
                 <span className="text-[9px] sm:text-[10px] font-bold whitespace-nowrap">GARANTÍA OFICIAL</span>
               </div>
-              <div className="flex items-center gap-2 sm:gap-3 text-slate-400 justify-center sm:justify-start">
-                <RotateCcw size={16} className="sm:w-[18px] sm:h-[18px] text-indigo-500 flex-shrink-0" />
+              <div className="flex items-center gap-2 sm:gap-3 text-white justify-center sm:justify-start">
+                <RotateCcw size={16} className="sm:w-[18px] sm:h-[18px] text-white flex-shrink-0" />
                 <span className="text-[9px] sm:text-[10px] font-bold whitespace-nowrap">DEVOLUCIÓN 30 DÍAS (producto cerrado)</span>
               </div>
             </div>

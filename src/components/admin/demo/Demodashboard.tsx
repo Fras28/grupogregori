@@ -543,7 +543,7 @@ const DemoDashboard = () => {
                       Inventario de Productos
                     </h3>
                   </div>
-                  <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase italic">
+                  <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase ">
                     {mockProducts.length} productos activos
                   </span>
                 </div>
@@ -567,7 +567,7 @@ const DemoDashboard = () => {
                       Gestión de Categorías
                     </h3>
                   </div>
-                  <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase italic">
+                  <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase ">
                     {mockCategories.length} categorías
                   </span>
                 </div>
@@ -590,7 +590,7 @@ const DemoDashboard = () => {
                     Gestión de Talles
                   </h3>
                 </div>
-                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase italic">
+                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase ">
                   {activeSizes.length} activos / {inactiveSizes.length} inactivos
                 </span>
               </div>
@@ -624,7 +624,7 @@ const DemoDashboard = () => {
                     Gestión de Colores
                   </h3>
                 </div>
-                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase italic">
+                <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase ">
                   {activeColors.length} activos / {inactiveColors.length} inactivos
                 </span>
               </div>
@@ -701,7 +701,7 @@ const DemoDashboard = () => {
                       Productos Archivados
                     </h3>
                   </div>
-                  <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase italic">
+                  <span className="text-[9px] sm:text-[10px] font-bold text-slate-500 uppercase ">
                     {mockInactiveProducts.length} items desactivados
                   </span>
                 </div>

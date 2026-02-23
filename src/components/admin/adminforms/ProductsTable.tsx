@@ -31,7 +31,7 @@ const ProductsTable = ({ products, onEdit, showInactive = false }: ProductsTable
 
   const handleRestore = (product: Product) => {
     modals.openConfirmModal({
-      title: <span className="font-black uppercase italic text-emerald-500">Reactivar Producto</span>,
+      title: <span className="font-black uppercase  text-emerald-500">Reactivar Producto</span>,
       children: (
         <p className="text-sm text-slate-400">
           ¿Deseas volver a activar <span className="text-white font-bold">"{product.name}"</span>? 
@@ -46,7 +46,7 @@ const ProductsTable = ({ products, onEdit, showInactive = false }: ProductsTable
 
   const handleDelete = (product: Product) => {
     modals.openConfirmModal({
-      title: <span className="font-black uppercase italic text-red-500">Eliminar Producto</span>,
+      title: <span className="font-black uppercase  text-red-500">Eliminar Producto</span>,
       children: (
         <p className="text-sm text-slate-400">
           ¿Estás seguro de eliminar <span className="text-red-500 font-bold">"{product.name}"</span>?
@@ -96,7 +96,7 @@ const ProductsTable = ({ products, onEdit, showInactive = false }: ProductsTable
         header: 'Producto',
         cell: (info) => (
           <div className="flex flex-col">
-            <span className={`font-black italic uppercase text-sm ${showInactive ? 'text-slate-500 line-through' : 'text-white'}`}>
+            <span className={`font-black  uppercase text-sm ${showInactive ? 'text-slate-500 line-through' : 'text-white'}`}>
               {info.getValue() as string}
             </span>
             <span className="text-[10px] text-slate-500 font-bold truncate max-w-[200px]">

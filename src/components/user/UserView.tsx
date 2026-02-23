@@ -14,7 +14,14 @@ import { useAuthStore } from '../../store/authStore';
 import AuthRequiredModal from '../Auth/AuthRequiredModal';
 import Navbar from '../layout/Navbar';
 
-
+const STORE_CONFIG = {
+  slug: 'alquimystic', // Cambiar a 'grupo-gregori' o 'look-arround' según el comercio
+  name: 'Alquimystic',
+  description: 'Explora todo sobre los mejores hongos adaptógenos',
+  // Para otros comercios:
+  // 'grupo-gregori': 'Soluciones industriales en cerramientos'
+  // 'look-arround': 'Ropa urbana femenina de tendencia'
+} as const;
 const UserView = () => {
   const navigate = useNavigate();
   const { user } = useAuthStore();
@@ -23,21 +30,27 @@ const UserView = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [activeTab, setActiveTab] = useState<'shop' | 'orders' | 'favorites'>('shop');
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
-  
-  const { data: products, isLoading } = useProducts();
-  const { data: categories, isLoading: loadingCategories } = useCategories();
+
+  const { data: products, isLoading, error: productsError } = useProducts();
+  const { data: categories, isLoading: loadingCategories, error: categoriesError } = useCategories();
   const { addToCart, cart } = useCartStore();
 
   // ✅ Leer filtro de categoría desde URL
   useEffect(() => {
-    const categoryParam = searchParams.get('categoria');
-    if (categoryParam && categories) {
-      const category = categories.find(c => generateSlug(c.name) === categoryParam);
-      if (category) {
-        setSelectedCategory(category.id);
+    if (productsError || categoriesError) {
+      const error = productsError || categoriesError;
+      const status = (error as any)?.response?.status;
+      const message = (error as any)?.response?.data?.message;
+
+      if (status === 403 && message?.includes('store')) {
+        notifications.show({
+          title: 'Error de configuración',
+          message: 'No se pudo identificar el comercio. Verifica el STORE_SLUG en axios.ts',
+          color: 'red',
+        });
       }
     }
-  }, [searchParams, categories]);
+  }, [productsError, categoriesError]);
 
   // ✅ Resetear activeTab a 'shop' si el usuario hace logout y estaba en favoritos/pedidos
   useEffect(() => {
@@ -49,7 +62,7 @@ const UserView = () => {
   // ✅ Actualizar URL cuando cambia el filtro
   const handleCategoryChange = (categoryId: number | null) => {
     setSelectedCategory(categoryId);
-    
+
     if (categoryId === null) {
       // Remover el filtro de la URL
       searchParams.delete('categoria');
@@ -67,14 +80,14 @@ const UserView = () => {
   const handleAddToCart = (e: React.MouseEvent, product: Product) => {
     // 1. Prevenir navegación
     e.stopPropagation();
-  
+
     // 2. Control de autenticación
     if (!user) {
       setAuthAction('agregar productos al carrito');
       setShowAuthModal(true);
       return;
     }
-  
+
     // 3. Validación de Stock Agotado
     if (product.stock === 0) {
       notifications.show({
@@ -86,7 +99,7 @@ const UserView = () => {
       });
       return;
     }
-  
+
     // 4. Validación de Límite de Stock en Carrito
     const itemInCart = cart.find(item => item.id === product.id);
     if (itemInCart && itemInCart.quantity + 1 > product.stock) {
@@ -99,7 +112,7 @@ const UserView = () => {
       });
       return;
     }
-  
+
     // 5. Ejecución y Notificación de éxito
     addToCart(product, 1);
     notifications.show({
@@ -139,42 +152,37 @@ const UserView = () => {
     );
   }
 
+
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <Navbar/>
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 ">
       {/* Selector de Pestañas */}
+      <Navbar/>
       <div className="flex p-1 bg-red-900 border border-red-800 rounded-2xl w-fit mx-auto md:mx-0 shadow-2xl">
         <button
           onClick={() => setActiveTab('shop')}
-          className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-[10px] font-black tracking-widest transition-all ${
-            activeTab === 'shop' 
-            ? 'bg-red-600 text-white shadow-lg shadow-red-600/20' 
+          className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-[10px] font-black tracking-widest transition-all ${activeTab === 'shop'
+            ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
             : 'text-red-500 hover:text-red-300'
-          }`}
+            }`}
         >
           <Store size={14} /> TIENDA
         </button>
-        {/* ✅ Solo mostrar Favoritos si el usuario está autenticado */}
         {user && (
           <button
-              onClick={() => setActiveTab('favorites')}
-              className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold text-[10px] transition-all ${
-                activeTab === 'favorites' ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/20' : 'text-red-400 hover:text-red-200'
+            onClick={() => setActiveTab('favorites')}
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold text-[10px] transition-all ${activeTab === 'favorites' ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/20' : 'text-red-400 hover:text-red-200'
               }`}
-            >
-              <Heart size={14} /> FAVORITOS
-            </button>
+          >
+            <Heart size={14} /> FAVORITOS
+          </button>
         )}
-
-        {/* ✅ Solo mostrar Mis Pedidos si el usuario está autenticado */}
         {user && (
           <button
             onClick={() => setActiveTab('orders')}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-[10px] font-black tracking-widest transition-all ${
-              activeTab === 'orders' 
-              ? 'bg-red-600 text-white shadow-lg shadow-red-600/20' 
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-[10px] font-black tracking-widest transition-all ${activeTab === 'orders'
+              ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
               : 'text-red-500 hover:text-red-300'
-            }`}
+              }`}
           >
             <ShoppingBag size={14} /> MIS PEDIDOS
           </button>
@@ -186,28 +194,28 @@ const UserView = () => {
           {/* Header de la Tienda con Filtros */}
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
             <div>
-              <h2 className="text-3xl font-black text-white italic tracking-tighter uppercase">
-                NUESTRO <span className="text-red-600">CATÁLOGO</span>
+              <h2 className="text-3xl font-black text-white  tracking-tighter uppercase">
+                NUESTRO <span className="text-red-400">CATÁLOGO</span>
               </h2>
-              <p className="text-red-500 text-sm mt-1">
-                Explora todo sobre los mejores hongos adaptogenos
+              {/* ✅ Descripción dinámica según el comercio configurado */}
+              <p className="text-white text-sm mt-1">
+                {STORE_CONFIG.description}
               </p>
             </div>
 
             {/* Filtros de Categoría */}
             <div className="flex flex-col gap-2 min-w-[250px]">
-              <div className="flex items-center gap-2 text-red-400 text-xs font-black uppercase tracking-wider">
+              <div className="flex items-center gap-2 text-white text-xs font-black uppercase tracking-wider">
                 <Filter size={14} />
                 Filtrar por categoría
               </div>
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => handleCategoryChange(null)}
-                  className={`px-4 py-2 rounded-xl text-[10px] font-black tracking-widest transition-all ${
-                    selectedCategory === null
-                      ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
-                      : 'bg-red-900 text-red-400 border border-red-800 hover:border-red-600'
-                  }`}
+                  className={`px-4 py-2 rounded-xl text-[10px] font-black tracking-widest transition-all ${selectedCategory === null
+                    ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
+                    : 'bg-red-900 text-red-400 border border-red-800 hover:border-red-600'
+                    }`}
                 >
                   TODOS
                 </button>
@@ -221,11 +229,10 @@ const UserView = () => {
                     <button
                       key={category.id}
                       onClick={() => handleCategoryChange(category.id)}
-                      className={`px-4 py-2 rounded-xl text-[10px] font-black tracking-widest transition-all flex items-center gap-1.5 ${
-                        selectedCategory === category.id
-                          ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
-                          : 'bg-red-900 text-red-400 border border-red-800 hover:border-red-600'
-                      }`}
+                      className={`px-4 py-2 rounded-xl text-[10px] font-black tracking-widest transition-all flex items-center gap-1.5 ${selectedCategory === category.id
+                        ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
+                        : 'bg-red-900 text-red-400 border border-red-800 hover:border-red-600'
+                        }`}
                     >
                       <Tag size={10} />
                       {category.name.toUpperCase()}
@@ -238,11 +245,11 @@ const UserView = () => {
 
           {/* Contador de productos filtrados */}
           {selectedCategory && (
-            <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-4 flex items-center gap-3">
-              <Tag className="text-red-400" size={20} />
+            <div className="bg-purple-500/10 border border-purple-500/20 rounded-2xl p-4 flex items-center gap-3">
+              <Tag className="text-purple-400" size={20} />
               <p className="text-sm text-white font-bold">
                 Mostrando {filteredProducts?.length || 0} producto(s) en{' '}
-                <span className="text-red-400">
+                <span className="text-purple-400">
                   {categories?.find(c => c.id === selectedCategory)?.name}
                 </span>
               </p>
@@ -257,7 +264,7 @@ const UserView = () => {
 
           {/* Grid de Productos */}
           {filteredProducts && filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProducts.map((product, index) => {
                 const isOutOfStock = product.stock === 0;
                 const isLowStock = product.stock > 0 && product.stock <= 5;
@@ -268,7 +275,7 @@ const UserView = () => {
                 const primaryImage = product.images && product.images.length > 0
                   ? product.images[0].url
                   : 'https://placehold.co/600x600/1e293b/4f46e5?text=Sin+Imagen';
-                
+
                 const additionalImagesCount = product.images ? product.images.length - 1 : 0;
 
                 // ✅ OPTIMIZACIÓN: Primeros 6 productos sin lazy loading (above the fold)
@@ -278,11 +285,10 @@ const UserView = () => {
                   <div
                     key={product.id}
                     onClick={() => handleProductClick(product.id, product.name)}
-                    className={`group bg-red-900 border rounded-[2.5rem] p-4 transition-all duration-500 hover:shadow-2xl flex flex-col cursor-pointer ${
-                      isOutOfStock 
-                        ? 'border-red-800/50 opacity-60' 
-                        : 'border-red-800 hover:border-red-500/50 hover:shadow-red-500/10'
-                    }`}
+                    className={`group bg-red-900 border rounded-[2.5rem] p-4 transition-all duration-500 hover:shadow-2xl flex flex-col cursor-pointer ${isOutOfStock
+                      ? 'border-red-800/50 opacity-60'
+                      : 'border-red-800 hover:border-red-500/50 hover:shadow-red-500/10'
+                      }`}
                   >
                     {/* Imagen del Producto con Lazy Loading */}
                     <div className="relative mb-6 overflow-hidden rounded-[2rem]">
@@ -292,11 +298,10 @@ const UserView = () => {
                         alt={product.name}
                         priority={isPriority}
                         aspectRatio="square"
-                        className={`transition-transform duration-700 ${
-                          !isOutOfStock && 'group-hover:scale-110'
-                        }`}
+                        className={`transition-transform duration-700 ${!isOutOfStock && 'group-hover:scale-110'
+                          }`}
                       />
-                      
+
                       {/* Badge de múltiples imágenes */}
                       {additionalImagesCount > 0 && (
                         <div className="absolute bottom-4 right-4">
@@ -306,7 +311,7 @@ const UserView = () => {
                           </span>
                         </div>
                       )}
-                      
+
                       {/* Badges de estado de stock */}
                       <div className="absolute top-4 left-4 flex flex-col gap-2">
                         {isOutOfStock ? (
@@ -322,7 +327,7 @@ const UserView = () => {
                             <CheckCircle size={10} /> DISPONIBLE
                           </span>
                         )}
-                        
+
                         {itemInCart && itemInCart.quantity > 0 && (
                           <span className="bg-red-950/90 backdrop-blur-md text-red-400 text-[9px] font-black px-2.5 py-1 rounded-full border border-red-500/30">
                             {itemInCart.quantity} en carrito
@@ -332,7 +337,7 @@ const UserView = () => {
 
                       {product.category && (
                         <div className="absolute top-4 right-4">
-                          <span className="bg-red-950/80 backdrop-blur-md text-red-400 text-[9px] font-black px-2.5 py-1 rounded-full border border-red-500/30">
+                          <span className="bg-purple-950/80 backdrop-blur-md text-purple-400 text-[9px] font-black px-2.5 py-1 rounded-full border border-purple-500/30">
                             {product.category.name.toUpperCase()}
                           </span>
                         </div>
@@ -350,21 +355,28 @@ const UserView = () => {
                     {/* Info del Producto */}
                     <div className="px-2 space-y-3 flex-1">
                       <div className="flex justify-between items-start gap-2">
-                        <h3 className={`text-lg font-bold transition-colors line-clamp-1 italic ${
-                          isOutOfStock ? 'text-white' : 'text-white group-hover:text-white'
-                        }`}>
+                        <h3 className={`text-lg font-bold transition-all duration-300 ease-out line-clamp-1 ${isOutOfStock
+                          ? 'text-red-500'
+                          : 'text-white  '
+                          }`}>
                           {product.name}
                         </h3>
-                        <p className={`text-xl font-black tracking-tighter ${
-                          isOutOfStock ? 'text-white' : 'text-white'
-                        }`}>
+
+                        <p className={`text-xl font-black tracking-tighter transition-colors duration-300 ${isOutOfStock ? 'text-red-600' : 'text-red-400'
+                          }`}>
                           ${Number(product.price).toLocaleString()}
                         </p>
-                      </div>
 
-                      <p className="text-white text-sm line-clamp-2 min-h-[40px] leading-relaxed">
+                      </div>
+                      <p className={`
+  text-sm line-clamp-2 min-h-[40px] leading-relaxed
+  transition-all duration-300 ease-out
+  text-white/90  group-hover:scale-[1.02] group-hover:translate-x-1
+`}>
                         {product.description || 'Sin descripción detallada disponible.'}
                       </p>
+
+
 
                       {!isOutOfStock && itemInCart && (
                         <div className="bg-red-800/50 border border-red-700/50 rounded-xl p-2">
@@ -383,13 +395,12 @@ const UserView = () => {
                       <div className="pt-4 flex gap-2">
                         <button
                           onClick={(e) => handleAddToCart(e, product)}
-                          className={`flex-1 py-3.5 rounded-2xl font-black text-[10px] tracking-widest transition-all  flex items-center justify-center gap-2 active:scale-95 shadow-lg ${
-                            isOutOfStock
-                              ? 'bg-white text-red-600 cursor-not-allowed '
-                              : remainingStock === 0
-                              ? 'bg-amber-600/20 text-amber-400 border border-amber-600/30 cursor-not-allowed'
-                              : 'bg-red-600 hover:bg-red-500 text-white shadow-white-600/20 border-2'
-                          }`}
+                          className={`flex-1 py-3.5 rounded-2xl border-white border-2 font-black text-[10px] tracking-widest transition-all flex items-center justify-center gap-2 active:scale-95 shadow-lg ${isOutOfStock
+                            ? 'bg-red-800 text-red-600 cursor-not-allowed '
+                            : remainingStock === 0
+                              ? 'bg-amber-600/20 text-amber-400 border border-amber-600/30 cursor-not-allowed '
+                              : 'bg-red-600 hover:bg-red-500 text-white shadow-red-600/20'
+                            }`}
                           disabled={isOutOfStock || remainingStock === 0}
                         >
                           {isOutOfStock ? (
@@ -406,7 +417,7 @@ const UserView = () => {
                             </>
                           )}
                         </button>
-                        <button 
+                        <button
                           onClick={(e) => handleInfoClick(e, product.id, product.name)}
                           className="p-3.5 bg-red-800 hover:bg-red-700 text-red-300 hover:text-white rounded-2xl transition-all active:scale-95 border border-red-700/50 group/btn"
                           title="Ver detalles"
@@ -439,7 +450,7 @@ const UserView = () => {
           <UserOrders />
         </div>
       )}
-          <AuthRequiredModal
+      <AuthRequiredModal
         isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}
         action={authAction}

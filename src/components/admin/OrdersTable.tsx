@@ -227,7 +227,7 @@ const OrdersTable = ({ orders, onUpdateStatus }: OrdersTableProps) => {
       <div className="space-y-4 overflow-y-auto max-h-[750px] pr-2 custom-scrollbar">
         {filteredOrders.length === 0 ? (
           <div className="bg-slate-900/50 border border-dashed border-slate-800 p-12 rounded-[2rem] text-center">
-            <p className="text-slate-600 text-[10px] font-black uppercase tracking-[0.2em] italic">
+            <p className="text-slate-600 text-[10px] font-black uppercase tracking-[0.2em] ">
               {filterPayment === 'all' && filterStatus === 'all' 
                 ? 'Sin órdenes registradas' 
                 : 'No hay órdenes con estos filtros'}
@@ -271,7 +271,7 @@ const OrdersTable = ({ orders, onUpdateStatus }: OrdersTableProps) => {
                   </div>
                   <div className="text-right">
                     <p className="text-[9px] font-black text-slate-600 uppercase mb-1 tracking-widest">Total</p>
-                    <p className="text-2xl font-black text-white italic">${Number(order.total).toLocaleString()}</p>
+                    <p className="text-2xl font-black text-white ">${Number(order.total).toLocaleString()}</p>
                     {/* Mostrar descuento si existe */}
                     {order.discount && order.discount > 0 && (
                       <p className="text-[9px] font-bold text-emerald-400 mt-1">

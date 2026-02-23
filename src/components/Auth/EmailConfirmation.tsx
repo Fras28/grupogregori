@@ -58,7 +58,7 @@ const EmailConfirmation = () => {
         {status === 'loading' && (
           <>
             <Loader2 className="w-16 h-16 text-indigo-500 mx-auto mb-4 animate-spin" />
-            <h2 className="text-2xl font-black text-white uppercase italic">
+            <h2 className="text-2xl font-black text-white uppercase ">
               Verificando...
             </h2>
             <p className="text-slate-400 mt-2">
@@ -70,7 +70,7 @@ const EmailConfirmation = () => {
         {status === 'success' && (
           <>
             <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4 animate-bounce" />
-            <h2 className="text-2xl font-black text-white uppercase italic">
+            <h2 className="text-2xl font-black text-white uppercase ">
               ¡Cuenta Confirmada!
             </h2>
             <p className="text-slate-400 mt-2">{message}</p>
@@ -89,7 +89,7 @@ const EmailConfirmation = () => {
         {status === 'error' && (
           <>
             <XCircle className="w-16 h-16 text-red-500 mx-auto mb-4" />
-            <h2 className="text-2xl font-black text-white uppercase italic">
+            <h2 className="text-2xl font-black text-white uppercase ">
               Error de Verificación
             </h2>
             <p className="text-slate-400 mt-2">{message}</p>

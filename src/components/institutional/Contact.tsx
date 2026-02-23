@@ -94,7 +94,7 @@ const Contact = (): JSX.Element => {
             <div className="col-span-12 lg:col-span-10">
               <h1 className="text-5xl md:text-7xl lg:text-[110px] font-black uppercase leading-[0.85] tracking-tighter">
                 Hablemos de <br/>
-                <span className="text-[#E30613] italic">tu proyecto</span>
+                <span className="text-[#E30613] ">tu proyecto</span>
               </h1>
               <div className="mt-12 w-24 h-2 bg-[#E30613]"></div>
               <p className="mt-10 text-xl md:text-2xl text-slate-400 max-w-2xl font-medium leading-relaxed">
@@ -174,7 +174,7 @@ const Contact = (): JSX.Element => {
               <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#E30613]"></div>
 
               <h2 className="text-4xl font-black uppercase mb-10 tracking-tighter">
-                Solicitar <span className="text-[#E30613] italic">Presupuesto</span>
+                Solicitar <span className="text-[#E30613] ">Presupuesto</span>
               </h2>
 
               <form onSubmit={handleSubmit} className="space-y-8">
@@ -272,7 +272,7 @@ const Contact = (): JSX.Element => {
       <section className="bg-[#141414] py-32 border-y border-white/5">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-5xl font-black uppercase mb-16 tracking-tighter text-center">
-            Consultas <span className="text-[#E30613] italic">Técnicas</span>
+            Consultas <span className="text-[#E30613] ">Técnicas</span>
           </h2>
           
           <div className="space-y-1">

@@ -28,7 +28,7 @@ const CategoriesTable = ({ categories, onEdit }: CategoriesTableProps) => {
 
   const handleDelete = (category: Category) => {
     modals.openConfirmModal({
-      title: <span className="font-black uppercase italic text-red-500">Eliminar Categoría</span>,
+      title: <span className="font-black uppercase  text-red-500">Eliminar Categoría</span>,
       children: (
         <div className="space-y-3">
           <p className="text-sm text-slate-400">
@@ -61,7 +61,7 @@ const CategoriesTable = ({ categories, onEdit }: CategoriesTableProps) => {
               <Tag className="text-purple-400" size={18} />
             </div>
             <div className="flex flex-col">
-              <span className="text-white font-black italic uppercase text-sm">{info.getValue() as string}</span>
+              <span className="text-white font-black  uppercase text-sm">{info.getValue() as string}</span>
               <span className="text-[10px] text-slate-500 font-bold truncate max-w-[200px]">
                 {info.row.original.description || 'SIN DESCRIPCIÓN'}
               </span>
@@ -134,7 +134,7 @@ const CategoriesTable = ({ categories, onEdit }: CategoriesTableProps) => {
       <div className="space-y-3 overflow-y-auto max-h-[500px] pr-2 custom-scrollbar">
         {table.getRowModel().rows.length === 0 ? (
           <div className="bg-slate-900/50 border border-dashed border-slate-800 p-12 rounded-[2rem] text-center">
-            <p className="text-slate-600 text-[10px] font-black uppercase tracking-[0.2em] italic">
+            <p className="text-slate-600 text-[10px] font-black uppercase tracking-[0.2em] ">
               No hay categorías registradas
             </p>
           </div>
