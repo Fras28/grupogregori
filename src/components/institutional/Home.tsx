@@ -2,7 +2,6 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import Logo from "../../assets/GregoriLogo.webp"
 
 interface Stat {
   value: string;
@@ -31,7 +30,7 @@ const Home = (): JSX.Element => {
     {
       title: 'Cortinas Metálicas',
       description: 'Sistemas de alta resistencia para protección perimetral industrial.',
-      icon: Logo,
+      icon: 'warehouse',
       link: '/servicios',
     },
     {
