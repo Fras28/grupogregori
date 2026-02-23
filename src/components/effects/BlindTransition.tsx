@@ -1,6 +1,7 @@
 // components/effects/BlindTransition.tsx
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import Logo from "../../assets/GregoriLogo.webp"
 
 interface BlindTransitionProps {
   children: React.ReactNode;
@@ -84,7 +85,7 @@ const BlindTransition = ({ children }: BlindTransitionProps): JSX.Element => {
             isOpen ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
           }`}>
             <img 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlD5Bv_GReRRTq9VwvzjT2OYl7OZF_vr_rIKwpCI1Ohy8G4IrHiDAadW0xBnD-_eUKyFtkUDnvC9wrXfI-fK7rgYJx2BLgno0ydcNBz_Dk5dqr9cV65NbJ1PeEx8jxQPbr1eP7Ale9BfwICICiiTa-tmsh7A0A1NDlzPOriPZSjCrjrF4XWVTj7t6OLBVZLvWPrXzBdzvdpmIJlr5nQXE_g7OT-sDPzRMshETIDpP0DS_jGGHil85tA4gSQCSyThHVZIbw3D0WClZb"
+              src={Logo}
               alt="Grupo Gregori"
               className="h-16 w-auto mx-auto mb-4 brightness-0 invert"
             />

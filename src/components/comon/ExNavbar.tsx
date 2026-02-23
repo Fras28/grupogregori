@@ -5,7 +5,7 @@ import { ShoppingCart as CartIcon, LogOut, Shield, Menu, X, Store, LogIn, Sparkl
 import { Role } from '../../types';
 import { useAuthStore } from '../../store/authStore';
 import { useCartStore } from '../../store/cartStore';
-import Logo from "../../assets/alquemystic.jpg";
+import Logo from "../../assets/GregoriLogo.webp";
 
 const Navbar = ({ isLanding = false }: { isLanding?: boolean }) => {
   const navigate = useNavigate();

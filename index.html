@@ -1,38 +1,79 @@
 <!doctype html>
-<html lang="en">
-
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="src/assets/alquemystic.jpg" />
+  <link rel="icon" type="image/png" href="/public/GregoriLogo.webp" />
+  
+  <!-- Preconnect para fuentes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://lh3.googleusercontent.com">
+  
+  <!-- Fuentes con display=swap para evitar FOIT -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alquimystic</title>
-
+  
+  <!-- SEO Básico -->
+  <title>Grupo Gregori | Cortinas Metálicas y Persianas Industriales desde 1962</title>
+  <meta name="description" content="Líderes en ingeniería de cerramientos industriales. Cortinas metálicas, persianas de enrollar, puertas rápidas. Más de 60 años de trayectoria en Argentina. Presupuesto en 24hs." />
+  <meta name="keywords" content="cortinas metálicas industriales, persianas industriales argentina, puertas rápidas lona, cerramientos industriales, cortinas galpones, persianas enrollar automatizadas" />
+  
+  <!-- Canonical -->
+  <link rel="canonical" href="https://grupogregori.com.ar/" />
+  
+  <!-- Robots -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://front-dynnamo-ecommerce.vercel.app//" />
-  <meta property="og:title" content="Alquimystic" />
-  <meta property="og:description" content="Alquimystic" />
-  <meta property="og:image"
-    content="https://res.cloudinary.com/dqdfpqwl4/image/upload/v1770323813/products/vfb6o0h4lh3ijd08h1bw.png" />
-
-
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:url" content="https://front-dynnamo-ecommerce.vercel.app/" />
-  <meta property="twitter:title" content="Alquimystic" />
-  <meta property="twitter:description" content="Alquimystic" />
-  <meta property="twitter:image"
-    content="https://res.cloudinary.com/dqdfpqwl4/image/upload/v1770323813/products/vfb6o0h4lh3ijd08h1bw.png" />
+  <meta property="og:url" content="https://grupogregori.com.ar/" />
+  <meta property="og:title" content="Grupo Gregori | Ingeniería en Cerramientos Industriales" />
+  <meta property="og:description" content="60+ años de trayectoria. Cortinas metálicas, persianas industriales y puertas rápidas para la industria argentina." />
+  <meta property="og:image" content="https://grupogregori.com.ar/og-image.jpg" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="Grupo Gregori" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Grupo Gregori | Cortinas Metálicas Industriales" />
+  <meta name="twitter:description" content="Soluciones de cerramiento industrial desde 1962. Presupuesto en 24 horas." />
+  <meta name="twitter:image" content="https://grupogregori.com.ar/og-image.jpg" />
+  
+  <!-- Geo Tags para SEO Local -->
+  <meta name="geo.region" content="AR-B" />
+  <meta name="geo.placename" content="Berazategui, Buenos Aires" />
+  <meta name="geo.position" content="-34.7633;-58.2113" />
+  <meta name="ICBM" content="-34.7633, -58.2113" />
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Grupo Gregori",
+    "url": "https://grupogregori.com.ar",
+    "logo": "https://grupogregori.com.ar/logo.png",
+    "description": "Ingeniería en cerramientos industriales desde 1962",
+    "foundingDate": "1962",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Parque Industrial, Berazategui",
+      "addressLocality": "Berazategui",
+      "addressRegion": "Buenos Aires",
+      "addressCountry": "AR"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+54-11-4567-8900",
+      "contactType": "Ventas"
+    }
+  }
+  </script>
 </head>
-
 <body>
   <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+  <script type="module" src="/src/main.tsx"></script>
 </body>
-
 </html>

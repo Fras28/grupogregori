@@ -1,6 +1,8 @@
 // components/institutional/Home.tsx
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import Logo from "../../assets/GregoriLogo.webp"
 
 interface Stat {
   value: string;
@@ -29,7 +31,7 @@ const Home = (): JSX.Element => {
     {
       title: 'Cortinas Metálicas',
       description: 'Sistemas de alta resistencia para protección perimetral industrial.',
-      icon: 'warehouse',
+      icon: Logo,
       link: '/servicios',
     },
     {
@@ -47,6 +49,33 @@ const Home = (): JSX.Element => {
   ];
 
   return (
+    <>
+      <Helmet>
+        <title>Grupo Gregori | Cortinas Metálicas y Persianas Industriales desde 1962</title>
+        <meta name="description" content="Líderes en ingeniería de cerramientos industriales. 60+ años de trayectoria, planta de fabricación propia en Berazategui. Presupuesto en 24hs." />
+        <link rel="canonical" href="https://grupogregori.com.ar/" />
+        
+        {/* Schema Service para cada solución */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": features.map((feature, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "item": {
+                "@type": "Service",
+                "name": feature.title,
+                "description": feature.description,
+                "provider": {
+                  "@type": "Organization",
+                  "name": "Grupo Gregori"
+                }
+              }
+            }))
+          })}
+        </script>
+      </Helmet>
     <div className="bg-[#0a0a0a]">
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -305,6 +334,7 @@ const Home = (): JSX.Element => {
         </div>
       </section>
     </div>
+    </>
   );
 };
 

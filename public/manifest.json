@@ -1,25 +1,74 @@
 {
-    "short_name": "Alquimystic",
-    "name": "Alquimystic - Consiencia natural, adaptogenos y mas poder ",
-    "icons": [
-      {
-        "src": "favicon.ico",
-        "sizes": "64x64 32x32 24x24 16x16",
-        "type": "image/x-icon"
-      },
-      {
-        "src": "logo192.png",
-        "type": "image/png",
-        "sizes": "192x192"
-      },
-      {
-        "src": "logo512.png",
-        "type": "image/png",
-        "sizes": "512x512"
-      }
-    ],
-    "start_url": ".",
-    "display": "standalone",
-    "theme_color": "#26262d",
-    "background_color": "#ffffff"
-  }
+  "short_name": "Grupo Gregori",
+  "name": "Grupo Gregori - Ingeniería en Cerramientos Industriales desde 1962",
+  "description": "Líderes en cortinas metálicas, persianas industriales y puertas rápidas. 60+ años de trayectoria en Argentina.",
+  "icons": [
+    {
+      "src": "GregoriLogo.webp",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/webp"
+    },
+    {
+      "src": "GregoriLogo.webp",
+      "type": "image/webp",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "GregoriLogo.webp",
+      "type": "image/webp",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#E30613",
+  "background_color": "#0a0a0a",
+  "categories": ["business", "industrial", "manufacturing"],
+  "lang": "es-AR",
+  "dir": "ltr",
+  "scope": "/",
+  "screenshots": [
+    {
+      "src": "screenshot-wide.webp",
+      "sizes": "1280x720",
+      "type": "image/webp",
+      "form_factor": "wide",
+      "label": "Galería de proyectos industriales Grupo Gregori"
+    },
+    {
+      "src": "screenshot-narrow.webp",
+      "sizes": "750x1334",
+      "type": "image/webp",
+      "form_factor": "narrow",
+      "label": "Contacto Grupo Gregori en móvil"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Solicitar Presupuesto",
+      "short_name": "Presupuesto",
+      "description": "Formulario de contacto para cotización",
+      "url": "/contacto",
+      "icons": [{ "src": "GregoriLogo.webp", "sizes": "96x96" }]
+    },
+    {
+      "name": "Ver Servicios",
+      "short_name": "Servicios",
+      "description": "Nuestras soluciones de cerramiento",
+      "url": "/servicios",
+      "icons": [{ "src": "GregoriLogo.webp", "sizes": "96x96" }]
+    },
+    {
+      "name": "Galería de Proyectos",
+      "short_name": "Proyectos",
+      "description": "Trabajos realizados",
+      "url": "/galeria",
+      "icons": [{ "src": "GregoriLogo.webp", "sizes": "96x96" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

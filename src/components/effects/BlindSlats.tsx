@@ -1,5 +1,6 @@
 // components/effects/BlindSlats.tsx
 import { useState, useEffect } from 'react';
+import Logo from "../../assets/GregoriLogo.webp";
 
 interface BlindSlatsProps {
   isOpen: boolean;
@@ -181,9 +182,7 @@ const BlindSlats = ({
             <div className="relative w-28 h-28 border border-[#E30613]/60 flex items-center justify-center mb-6 mx-auto bg-[#0a0a0a]/80 backdrop-blur-sm">
               <div className="absolute inset-1 border border-[#E30613]/25"></div>
               <div className="absolute -inset-2 border border-[#E30613]/10"></div>
-              <span className="material-symbols-outlined text-6xl text-[#E30613]">
-                warehouse
-              </span>
+             <img src={Logo} alt="Gregori Logo" />
             </div>
             
             <h2 className="text-3xl font-black uppercase tracking-tighter text-white mb-3 relative">

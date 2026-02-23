@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
+import Logo from "../../assets/LogoNav.webp"
 
 
 interface NavLink {
@@ -50,8 +51,8 @@ const Navbar = (): JSX.Element => {
           <Link to="/" className="flex-shrink-0 flex items-center">
             <img 
               alt="Grupo Gregori" 
-              className="h-9 w-auto" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlD5Bv_GReRRTq9VwvzjT2OYl7OZF_vr_rIKwpCI1Ohy8G4IrHiDAadW0xBnD-_eUKyFtkUDnvC9wrXfI-fK7rgYJx2BLgno0ydcNBz_Dk5dqr9cV65NbJ1PeEx8jxQPbr1eP7Ale9BfwICICiiTa-tmsh7A0A1NDlzPOriPZSjCrjrF4XWVTj7t6OLBVZLvWPrXzBdzvdpmIJlr5nQXE_g7OT-sDPzRMshETIDpP0DS_jGGHil85tA4gSQCSyThHVZIbw3D0WClZb"
+              className="h-12 w-auto" 
+              src={Logo}
             />
           </Link>
 

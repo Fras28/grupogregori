@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Logo from "../../assets/LogoNav.webp"
 
 interface FooterLink {
   to: string;
@@ -28,8 +29,8 @@ const Footer = (): JSX.Element => {
           <div className="col-span-1 lg:col-span-1">
             <img 
               alt="Grupo Gregori" 
-              className="h-10 w-auto mb-6 grayscale brightness-200" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1SFvT9JLyIqs_6p3lrnSeM3QEyefDS2YNaIM-ogZqxAH7THAFq84Cr42Lk9U7pk0Ib3XzswoxPaVxXvDarZd7GiorHVUzUSVKWjSuEbRxdcaIuBvSfsI_WD-nhE3Ph4wq1NmEXW-Uwki516tOeO7W1gOcYjw3AWxkDXp3UdacuXycm2HUhJ5E3FiaodzrfvwEOIzvDpWFGAPV93AMxibSbL-4Fyebf43yQT66BPgkKeddwxqbACYpvT4bhkUg7h04nqWDe_06vJQW"
+              className=" w-auto mb-6" 
+              src={Logo}
             />
             <p className="text-slate-500 text-sm leading-relaxed font-medium max-w-sm uppercase tracking-tight">
               Líderes en ingeniería de cerramientos industriales. Calidad certificada y tecnología aplicada a la seguridad de su planta.
