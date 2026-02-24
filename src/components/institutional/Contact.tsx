@@ -456,6 +456,28 @@ const Contact = (): JSX.Element => {
 
                   {/* Row 3: Tipo y Ubicación */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                      <label
+                        htmlFor="tipo"
+                        className="block text-[10px] font-black uppercase tracking-widest text-slate-500"
+                      >
+                        Linea *
+                      </label>
+                      <select
+                        id="tipo"
+                        name="tipo"
+                        required
+                        className="w-full bg-[#0a0a0a] border-[#262626] p-4 text-sm text-white focus:ring-[#E30613] focus:border-[#E30613] transition-all duration-200 outline-none appearance-none"
+                        value={formData.tipo}
+                        onChange={handleChange}
+                      >
+                        <option value="COMERCIAL">COMERCIAL</option>
+                        <option value="INDUSTRIAL">INDUSTRIAL</option>
+                        <option value="HOGAR">HOGAR</option>
+                        <option value="SEGURIDAD">SEGURIDAD</option>
+                        
+                      </select>
+                    </div>
                     <div className="space-y-2">
                       <label
                         htmlFor="tipo"
