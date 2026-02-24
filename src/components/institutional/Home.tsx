@@ -2,6 +2,7 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import Persiana from "../../assets/persianaGreg.jpg"
 
 interface Stat {
   value: string;
@@ -28,19 +29,19 @@ const Home = (): JSX.Element => {
 
   const features: Feature[] = [
     {
-      title: 'Cortinas Metálicas',
-      description: 'Sistemas de alta resistencia para protección perimetral industrial.',
+      title: 'Cortinas y persianas',
+      description: 'Líderes en ingeniería de cerramientos. Soluciones de alta resistencia para la protección de tu local, hogar e industria.',
       icon: 'warehouse',
       link: '/servicios',
     },
     {
-      title: 'Persianas Industriales',
+      title: 'Automatizaciones',
       description: 'Automatización y control para accesos de gran envergadura.',
       icon: 'roller_shades',
       link: '/servicios',
     },
     {
-      title: 'Puertas Rápidas',
+      title: 'Seguridad',
       description: 'Soluciones de alta velocidad para flujo logístico continuo.',
       icon: 'sync_alt',
       link: '/servicios',
@@ -107,14 +108,13 @@ const Home = (): JSX.Element => {
           </div>
 
           <h1 className="text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-[0.9] tracking-tighter mb-8">
-            Seguridad
+          forjamos
             <br />
-            <span className="text-[#E30613] ">Industrial</span>
+            <span className="text-[#E30613] ">tu seguridad</span>
           </h1>
 
           <p className="text-xl md:text-2xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-            Líderes en ingeniería de cerramientos. Soluciones de alta resistencia
-            para la protección de tu industria.
+          Líderes en ingeniería de cerramientos. Soluciones de alta resistencia para la protección de tu local, hogar e industria
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -162,9 +162,7 @@ const Home = (): JSX.Element => {
             <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">
               Nuestras <span className="text-[#E30613]">Soluciones</span>
             </h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
-              Tecnología de vanguardia aplicada a la seguridad industrial
-            </p>
+    
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -248,7 +246,7 @@ const Home = (): JSX.Element => {
                 <img
                   alt="Instalación industrial"
                   className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlD5Bv_GReRRTq9VwvzjT2OYl7OZF_vr_rIKwpCI1Ohy8G4IrHiDAadW0xBnD-_eUKyFtkUDnvC9wrXfI-fK7rgYJx2BLgno0ydcNBz_Dk5dqr9cV65NbJ1PeEx8jxQPbr1eP7Ale9BfwICICiiTa-tmsh7A0A1NDlzPOriPZSjCrjrF4XWVTj7t6OLBVZLvWPrXzBdzvdpmIJlr5nQXE_g7OT-sDPzRMshETIDpP0DS_jGGHil85tA4gSQCSyThHVZIbw3D0WClZb"
+                  src={Persiana}
                 />
               </div>
               {/* Decorative element */}
