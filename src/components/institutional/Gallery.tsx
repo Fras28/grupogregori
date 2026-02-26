@@ -27,10 +27,10 @@ interface OptimizedImageProps {
   className?: string;
 }
 
-const OptimizedImage = ({ 
-  src, 
-  alt, 
-  aspect, 
+const OptimizedImage = ({
+  src,
+  alt,
+  aspect,
   priority = false,
   className = ''
 }: OptimizedImageProps) => {
@@ -133,8 +133,8 @@ const Gallery = (): JSX.Element => {
     { key: 'residencial', label: 'Residencial' }
   ];
 
-  const filteredProjects: Project[] = filter === 'todos' 
-    ? projects 
+  const filteredProjects: Project[] = filter === 'todos'
+    ? projects
     : projects.filter((p: Project) => p.category === filter);
 
   const visibleProjects = filteredProjects.slice(0, visibleCount);
@@ -169,12 +169,12 @@ const Gallery = (): JSX.Element => {
     <>
       <Helmet>
         <title>Galería | Grupo Gregori - Trabajos Realizados</title>
-        <meta 
-          name="description" 
-          content="Proyectos de cortinas metálicas, persianas industriales y cerramientos ejecutados en toda Argentina. Planta logística, oficinas corporativas y residencias." 
+        <meta
+          name="description"
+          content="Proyectos de cortinas metálicas, persianas industriales y cerramientos ejecutados en toda Argentina. Planta logística, oficinas corporativas y residencias."
         />
         <link rel="canonical" href="https://grupogregori.com.ar/galeria" />
-        
+
         <script type="application/ld+json">
           {JSON.stringify(projectsSchema)}
         </script>
@@ -184,8 +184,14 @@ const Gallery = (): JSX.Element => {
         {/* Header */}
         <header className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-l-4 border-[#E30613] pl-6">
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black uppercase leading-none tracking-tighter" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
-              Galería de <br/>
+            <h1
+              className="text-6xl md:text-8xl lg:text-9xl font-black uppercase leading-none"
+              style={{
+                fontFamily: 'Bebas Neue, sans-serif',
+                letterSpacing: '1px' // Aquí definimos el espacio de 1px
+              }}
+            >
+              Galería de <br />
               <span className="text-[#E30613]">Trabajos Realizados</span>
             </h1>
             <p className="mt-8 text-xl text-slate-400 max-w-2xl font-medium">
@@ -204,11 +210,10 @@ const Gallery = (): JSX.Element => {
                   setFilter(f.key);
                   setVisibleCount(6); // Reset al cambiar filtro
                 }}
-                className={`px-6 py-2 font-black uppercase text-sm tracking-widest transition-all ${
-                  filter === f.key 
-                    ? 'bg-[#E30613] text-white' 
+                className={`px-6 py-2 font-black uppercase text-sm tracking-widest transition-all ${filter === f.key
+                    ? 'bg-[#E30613] text-white'
                     : 'bg-transparent text-slate-400 hover:text-white border border-transparent hover:border-white/20'
-                }`}
+                  }`}
                 aria-pressed={filter === f.key}
               >
                 {f.label}
@@ -221,7 +226,7 @@ const Gallery = (): JSX.Element => {
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
             {visibleProjects.map((project: Project, index: number) => (
-              <article 
+              <article
                 key={project.id}
                 className="break-inside-avoid group cursor-pointer"
                 itemScope
@@ -229,7 +234,7 @@ const Gallery = (): JSX.Element => {
               >
                 <meta itemProp="name" content={project.title} />
                 <meta itemProp="dateCreated" content={project.year} />
-                
+
                 <div className={`relative ${project.aspect} bg-[#141414] overflow-hidden`}>
                   {/* Blind reveal effect */}
                   <div className="absolute inset-0 z-10 pointer-events-none" style={{
@@ -241,7 +246,7 @@ const Gallery = (): JSX.Element => {
                       rgba(10, 10, 10, 0.4) 5px
                     )`
                   }}></div>
-                  
+
                   <OptimizedImage
                     src={project.image}
                     alt={`${project.title} - Proyecto ${project.category} en ${project.location} por Grupo Gregori`}
@@ -249,9 +254,9 @@ const Gallery = (): JSX.Element => {
                     priority={index < 3}
                     className="grayscale group-hover:grayscale-0 group-hover:scale-110"
                   />
-                  
+
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80 z-10"></div>
-                  
+
                   <div className="absolute bottom-0 left-0 p-6 z-20">
                     <span className="bg-[#E30613] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest mb-2 inline-block">
                       {project.category}
@@ -271,7 +276,7 @@ const Gallery = (): JSX.Element => {
           {/* Load More Button */}
           {hasMore && (
             <div className="mt-20 text-center">
-              <button 
+              <button
                 onClick={loadMore}
                 className="px-12 py-4 border-2 border-[#E30613] text-[#E30613] hover:bg-[#E30613] hover:text-white transition-all font-black uppercase tracking-widest text-sm"
               >
