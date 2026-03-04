@@ -86,7 +86,7 @@ const Footer = (): JSX.Element => {
         </div>
 
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-[10px] font-black uppercase tracking-[0.3em] text-slate-600">
-          <p>© 2024 GRUPO GREGORI. INDUSTRIAL SOLUTIONS.</p>
+          <p>© 2024 GRUPO GREGORI.</p>
           <div className="flex space-x-8">
             <a href="#" className="hover:text-[#E30613] transition-colors">Legales</a>
             <a href="#" className="hover:text-[#E30613] transition-colors">Privacidad</a>

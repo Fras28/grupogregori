@@ -46,7 +46,7 @@ const Layout = ({ children }: LayoutProps): JSX.Element => {
               </div>
               <div className="flex items-center justify-center md:justify-end">
                 <p className="text-[8px] sm:text-[9px] font-bold text-slate-700 uppercase">
-                  © 2024 Grupo Gregori - Industrial Solutions
+                  © 2024 Grupo Gregori
                 </p>
               </div>
             </div>

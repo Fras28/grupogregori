@@ -189,13 +189,7 @@ const BlindSlats = ({
               Grupo Gregori
             </h2>
             
-            <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent to-[#E30613]"></div>
-              <span className="text-xs font-black uppercase tracking-[0.4em] text-slate-400">
-                Industrial
-              </span>
-              <div className="h-px w-16 bg-gradient-to-l from-transparent to-[#E30613]"></div>
-            </div>
+      
 
             <div className="flex items-center justify-center gap-2 mt-6">
               <div className="w-2 h-2 bg-[#E30613] rounded-full animate-pulse"></div>

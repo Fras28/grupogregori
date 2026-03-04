@@ -65,13 +65,7 @@ const RollerBlind = ({ isOpen, direction = 'up' }: RollerBlindProps): JSX.Elemen
             <h2 className="text-2xl font-black uppercase tracking-tighter text-white mb-2">
               Grupo Gregori
             </h2>
-            <div className="flex items-center justify-center gap-3">
-              <div className="h-px w-12 bg-[#E30613]"></div>
-              <span className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">
-                Industrial
-              </span>
-              <div className="h-px w-12 bg-[#E30613]"></div>
-            </div>
+    
           </div>
         </div>
 
