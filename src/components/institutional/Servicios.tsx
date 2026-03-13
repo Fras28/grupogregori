@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
-// Imágenes de servicios (URLs externas)
-import lamaciega from "../../assets/materiales/LAMACIEGA.png"
+
 
 // Imágenes de materiales por categoría (cada una muestra los 3 colores)
 import lamasCiega from "../../assets/materiales/LAMACIEGA.png"
