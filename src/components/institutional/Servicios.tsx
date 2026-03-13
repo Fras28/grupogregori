@@ -8,8 +8,8 @@ import lamasCiega from "../../assets/materiales/LAMACIEGA.png"
 import lamasPerforadas from "../../assets/materiales/LAMASPERFORADAS.png"
 import lamasWindows from "../../assets/materiales/LAMASWONDOWS.png"
 
-import Hogar from "../../assets/works/Hogar1.jpg"
-import Comercial from "../../assets/works/Comercial.jpg"
+import Hogar from "../../assets/works/hogar1.jpg"
+import Comercial from "../../assets/works/comercial.jpg"
 import Industrial from "../../assets/works/Industrial1.jpg"
 
 
