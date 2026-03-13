@@ -8,6 +8,12 @@ import lamasCiega from "../../assets/materiales/LAMACIEGA.png"
 import lamasPerforadas from "../../assets/materiales/LAMASPERFORADAS.png"
 import lamasWindows from "../../assets/materiales/LAMASWONDOWS.png"
 
+import Hogar from "../../assets/works/Hogar1.jpg"
+import Comercial from "../../assets/works/Comercial.jpg"
+import Industrial from "../../assets/works/Industrial1.jpg"
+
+
+
 interface ServiceSpec {
   label: string;
   value: string;
@@ -62,7 +68,7 @@ const Servicios = (): JSX.Element => {
         { label: 'Max Span', value: '6.000 MM' },
         { label: 'Load Rating', value: 'CAT 3 WIND' }
       ],
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRlRlAAQ1h-wSErIAOkCFhyXgSmNx69qEDKXE2hLAXe3TwiRuDw7bRn_LfSbzIPkn6G7NXmi1IJ9KLWLONtsD6xDg-JVZpDGHyopl_2k6_mNOIgjGJXUf0MYjtQstvul9_4cf6uymBZ5ysWFiYbDE6i7UOEMnEKSfScbpKW-kqKjr2SBxDy3ApM24-gvbxhmYyuji0D5KqdR-kuApmoMtEM_3gEZ0ie_atjei3OZDZgptV7mf2xtPlt6LwA-VCPf6m7JaZV-NLWCJ8',
+      image: Hogar,
       applications: ['Viviendas unifamiliares', 'Edificios residenciales', 'Country clubs', 'Condominios']
     },
     {
@@ -74,7 +80,7 @@ const Servicios = (): JSX.Element => {
         { label: 'Duty Cycle', value: '80 CYC/DAY' },
         { label: 'Safety Grade', value: 'LEVEL 4-B' }
       ],
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB1SFvT9JLyIqs_6p3lrnSeM3QEyefDS2YNaIM-ogZqxAH7THAFq84Cr42Lk9U7pk0Ib3XzswoxPaVxXvDarZd7GiorHVUzUSVKWjSuEbRxdcaIuBvSfsI_WD-nhE3Ph4wq1NmEXW-Uwki516tOeO7W1gOcYjw3AWxkDXp3UdacuXycm2HUhJ5E3FiaodzrfvwEOIzvDpWFGAPV93AMxibSbL-4Fyebf43yQT66BPgkKeddwxqbACYpvT4bhkUg7h04nqWDe_06vJQW',
+      image: Comercial,
       reverse: true,
       applications: ['Locales comerciales', 'Oficinas corporativas', 'Centros comerciales', 'Showrooms']
     },
@@ -87,7 +93,7 @@ const Servicios = (): JSX.Element => {
         { label: 'Max Span', value: '12.000 MM' },
         { label: 'Load Rating', value: 'CAT 5 HEAVY' }
       ],
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlD5Bv_GReRRTq9VwvzjT2OYl7OZF_vr_rIKwpCI1Ohy8G4IrHiDAadW0xBnD-_eUKyFtkUDnvC9wrXfI-fK7rgYJx2BLgno0ydcNBz_Dk5dqr9cV65NbJ1PeEx8jxQPbr1eP7Ale9BfwICICiiTa-tmsh7A0A1NDlzPOriPZSjCrjrF4XWVTj7t6OLBVZLvWPrXzBdzvdpmIJlr5nQXE_g7OT-sDPzRMshETIDpP0DS_jGGHil85tA4gSQCSyThHVZIbw3D0WClZb',
+      image: Industrial,
       applications: ['Centros logísticos', 'Plantas industriales', 'Galpones', 'Puertos y aeropuertos']
     }
   ];
@@ -224,7 +230,7 @@ const Servicios = (): JSX.Element => {
                   <div className="absolute inset-0 bg-gradient-to-b from-[#E30613]/20 to-transparent animate-pulse"></div>
                   <img 
                     alt={`${service.title} - ${service.division} por Grupo Gregori`}
-                    className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                    className="w-full h-full object-cover  "
                     src={service.image}
                     loading={serviceIndex < 2 ? "eager" : "lazy"}
                     fetchPriority={serviceIndex < 2 ? "high" : "auto"}

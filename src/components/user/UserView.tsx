@@ -154,13 +154,13 @@ const UserView = () => {
 
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 ">
+    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 pt-10 ">
       {/* Selector de Pestañas */}
       <Navbar/>
-      <div className="flex p-1 bg-red-900 border border-red-800 rounded-2xl w-fit mx-auto md:mx-0 shadow-2xl">
+      <div className="flex p-1 bg-red-900 border border-red-800 2xl w-fit mx-auto md:mx-0 shadow-2xl">
         <button
           onClick={() => setActiveTab('shop')}
-          className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-[10px] font-black tracking-widest transition-all ${activeTab === 'shop'
+          className={`flex items-center gap-2 px-6 py-2.5  text-[10px] font-black tracking-widest transition-all ${activeTab === 'shop'
             ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
             : 'text-red-500 hover:text-red-300'
             }`}
@@ -170,7 +170,7 @@ const UserView = () => {
         {user && (
           <button
             onClick={() => setActiveTab('favorites')}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold text-[10px] transition-all ${activeTab === 'favorites' ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/20' : 'text-red-400 hover:text-red-200'
+            className={`flex items-center gap-2 px-6 py-2.5  font-bold text-[10px] transition-all ${activeTab === 'favorites' ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/20' : 'text-red-400 hover:text-red-200'
               }`}
           >
             <Heart size={14} /> FAVORITOS
@@ -179,7 +179,7 @@ const UserView = () => {
         {user && (
           <button
             onClick={() => setActiveTab('orders')}
-            className={`flex items-center gap-2 px-6 py-2.5 rounded-xl text-[10px] font-black tracking-widest transition-all ${activeTab === 'orders'
+            className={`flex items-center gap-2 px-6 py-2.5  text-[10px] font-black tracking-widest transition-all ${activeTab === 'orders'
               ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
               : 'text-red-500 hover:text-red-300'
               }`}
@@ -212,7 +212,7 @@ const UserView = () => {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => handleCategoryChange(null)}
-                  className={`px-4 py-2 rounded-xl text-[10px] font-black tracking-widest transition-all ${selectedCategory === null
+                  className={`px-4 py-2  text-[10px] font-black tracking-widest transition-all ${selectedCategory === null
                     ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
                     : 'bg-red-900 text-red-400 border border-red-800 hover:border-red-600'
                     }`}
@@ -229,7 +229,7 @@ const UserView = () => {
                     <button
                       key={category.id}
                       onClick={() => handleCategoryChange(category.id)}
-                      className={`px-4 py-2 rounded-xl text-[10px] font-black tracking-widest transition-all flex items-center gap-1.5 ${selectedCategory === category.id
+                      className={`px-4 py-2  text-[10px] font-black tracking-widest transition-all flex items-center gap-1.5 ${selectedCategory === category.id
                         ? 'bg-red-600 text-white shadow-lg shadow-red-600/20'
                         : 'bg-red-900 text-red-400 border border-red-800 hover:border-red-600'
                         }`}

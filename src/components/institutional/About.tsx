@@ -91,7 +91,7 @@ const About = (): JSX.Element => {
             <h2 className="text-4xl font-black uppercase tracking-tighter">Legado Industrial</h2>
             <div className="space-y-6 text-lg text-slate-400 leading-relaxed">
               <p>
-                Fundada en 1962, Grupo Gregori nació con la visión de transformar la seguridad y funcionalidad de los espacios productivos. Lo que comenzó como un taller metalúrgico especializado, se ha convertido hoy en el referente nacional de cortinas y persianas industriales.
+                Fundada en 1962, Grupo Gregori nació con la visión de transformar la seguridad y funcionalidad de los espacios productivos. Lo que comenzó como un taller metalúrgico especializado, se ha convertido hoy en un referente nacional de cortinas y persianas industriales.
               </p>
               <p>
                 Nuestra historia no es solo sobre acero y motores; es sobre el compromiso inquebrantable con cada proyecto que lleva nuestra firma. Hemos crecido adaptándonos a las nuevas normativas de seguridad y eficiencia energética, integrando tecnología de vanguardia en procesos que conservan el rigor artesanal del detalle.

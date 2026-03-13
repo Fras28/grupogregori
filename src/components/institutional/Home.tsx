@@ -132,7 +132,7 @@ const Home = (): JSX.Element => {
           ></div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20">
-            <div className="inline-block bg-[#E30613]/10 border border-[#E30613]/30 px-4 py-2 mb-8">
+            <div className="inline-block bg-[#E30613]/5 border border-[#E30613]/30 px-4 py-2 mb-8">
               <span className="text-[#E30613] text-xs font-black uppercase tracking-[0.3em]">
                 Desde 1962
               </span>
