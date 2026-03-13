@@ -6,6 +6,7 @@ import industrial3 from "../../assets/works/Industrial3.png"
 import industrial4 from "../../assets/works/Industrial4.jpeg"
 import industrial5 from "../../assets/works/Industrial5.jpeg"
 import comercial1 from "../../assets/works/comercial.jpg"
+
 import comercial2 from "../../assets/works/comercial1.jpg"
 import comercial3 from "../../assets/works/comercial2.jpg"
 import hogar from "../../assets/works/Hogar.jpg"
