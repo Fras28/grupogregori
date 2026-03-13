@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Persiana from "../../assets/persianaGreg.jpg"
 import bgHero from "../../assets/bgGregoriHero2.jpg"
 import industrial from "../../assets/works/Industrial1.jpg"
-import Comercial from "../../assets/works/Comercial.jpg"
+import Comercial from "../../assets/works/comercial1.jpg"
 import Hogar from "../../assets/works/Hogar.jpg"
 
 interface Stat {

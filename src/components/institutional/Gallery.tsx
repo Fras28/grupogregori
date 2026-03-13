@@ -5,8 +5,6 @@ import industrial2 from "../../assets/works/Industrial2.jpg"
 import industrial3 from "../../assets/works/Industrial3.png"
 import industrial4 from "../../assets/works/Industrial4.jpeg"
 import industrial5 from "../../assets/works/Industrial5.jpeg"
-import comercial1 from "../../assets/works/comercial.jpg"
-
 import comercial2 from "../../assets/works/comercial1.jpg"
 import comercial3 from "../../assets/works/comercial2.jpg"
 import hogar from "../../assets/works/Hogar.jpg"
@@ -135,15 +133,6 @@ const Gallery = (): JSX.Element => {
     // COMERCIAL (3 imágenes)
     {
       id: 6,
-      title: 'Oficinas Puerto Madero',
-      category: 'comercial',
-      image: comercial1,
-      aspect: 'aspect-[4/5]',
-      location: 'Puerto Madero, CABA',
-      year: '2023'
-    },
-    {
-      id: 7,
       title: 'Edificio Tech-Hub',
       category: 'comercial',
       image: comercial2,
@@ -152,7 +141,7 @@ const Gallery = (): JSX.Element => {
       year: '2024'
     },
     {
-      id: 8,
+      id: 7,
       title: 'Centro Comercial Plaza',
       category: 'comercial',
       image: comercial3,
@@ -163,7 +152,7 @@ const Gallery = (): JSX.Element => {
     
     // RESIDENCIAL (3 imágenes)
     {
-      id: 9,
+      id: 8,
       title: 'Residencia Nordelta',
       category: 'residencial',
       image: hogar,
@@ -172,7 +161,7 @@ const Gallery = (): JSX.Element => {
       year: '2024'
     },
     {
-      id: 10,
+      id: 9,
       title: 'Casa Minimalista Pilar',
       category: 'residencial',
       image: hogar1,
@@ -181,7 +170,7 @@ const Gallery = (): JSX.Element => {
       year: '2024'
     },
     {
-      id: 11,
+      id: 10,
       title: 'Chalet San Isidro',
       category: 'residencial',
       image: hogar2,

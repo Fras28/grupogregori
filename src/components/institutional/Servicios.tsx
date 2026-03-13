@@ -9,7 +9,7 @@ import lamasPerforadas from "../../assets/materiales/LAMASPERFORADAS.png"
 import lamasWindows from "../../assets/materiales/LAMASWONDOWS.png"
 
 import Hogar from "../../assets/works/hogar1.jpg"
-import Comercial from "../../assets/works/comercial.jpg"
+import Comercial from "../../assets/works/comercial1.jpg"
 import Industrial from "../../assets/works/Industrial1.jpg"
 
 
