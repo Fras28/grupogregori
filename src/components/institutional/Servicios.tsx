@@ -61,7 +61,7 @@ const Servicios = (): JSX.Element => {
   const services: Service[] = [
     {
       id: '01',
-      division: 'DIVISIÓN RESIDENCIAL',
+      division: 'LINEA RESIDENCIAL',
       title: 'CONFORT Y ESTILO DOMÉSTICO',
       description: 'Implementación de sistemas de automatización y protección solar para proyectos arquitectónicos de alta gama. Soluciones que combinan estética minimalista con eficiencia térmica superior.',
       specs: [
@@ -73,7 +73,7 @@ const Servicios = (): JSX.Element => {
     },
     {
       id: '02',
-      division: 'DIVISIÓN COMERCIAL',
+      division: 'LINEA COMERCIAL',
       title: 'INFRAESTRUCTURA DE NEGOCIOS',
       description: 'Protección perimetral y cerramientos para locales comerciales y oficinas. Sistemas de seguridad integrados con control de acceso y gestión remota para máxima operatividad.',
       specs: [
@@ -86,7 +86,7 @@ const Servicios = (): JSX.Element => {
     },
     {
       id: '03',
-      division: 'DIVISIÓN INDUSTRIAL',
+      division: 'LINEA INDUSTRIAL',
       title: 'SISTEMAS DE ALTO IMPACTO',
       description: 'Ingeniería aplicada a la logística pesada. Cortinas metálicas de gran porte, puertas rápidas de lona y sellos de dock. Equipamiento diseñado para trabajo pesado 24/7.',
       specs: [
@@ -105,46 +105,46 @@ const Servicios = (): JSX.Element => {
     {
       id: 'CIEGA',
       name: 'Lamas Ciegas',
-      description: 'Máxima privacidad y oscuridad total. Ideal para cerramientos que requieren bloqueo completo de luz.',
+      description: 'Máxima privacidad y seguridad. Ideal para cerramientos que requieren proteccion vidrieras y balcones.',
       image: lamasCiega,
       variants: [
-        { color: 'Natural', hex: '#C0C0C0' },
+        { color: 'Metal', hex: '#e3e4e5' },
         { color: 'Negro', hex: '#1a1a1a' },
         { color: 'Blanco', hex: '#f5f5f5' }
       ],
       specs: [
         { label: 'Opacidad', value: '100%' },
-        { label: 'Espesor', value: '0.4mm' }
+        { label: 'Espesor', value: '0.8mm' }
       ]
     },
     {
       id: 'PERFORADA',
       name: 'Lamas Perforadas',
-      description: 'Ventilación controlada con privacidad. Perfecto para flujo de aire manteniendo seguridad.',
+      description: 'Seguridad para tu local sin ocultar tu vidriera. Permite el paso de luz y ventilacion, conservando la proteccion frente al exterior',
       image: lamasPerforadas,
       variants: [
-        { color: 'Natural', hex: '#C0C0C0' },
+        { color: 'Metal', hex: '#e3e4e5' },
         { color: 'Negro', hex: '#1a1a1a' },
         { color: 'Blanco', hex: '#f5f5f5' }
       ],
       specs: [
         { label: 'Perforación', value: '15%' },
-        { label: 'Ventilación', value: 'Alta' }
+        { label: 'Espesor', value: '0.8mm' }
       ]
     },
     {
       id: 'WINDOWS',
-      name: 'Lamas Windows',
-      description: 'Diseño arquitectónico con visibilidad controlada. Estética moderna para fachadas contemporáneas.',
+      name: 'Lamas Aluminio Extruido',
+      description: 'Diseño con estetica moderna y elegante. Ofrece una resistencia inigualable y durabilidad en condiciones extremas',
       image: lamasWindows,
       variants: [
-        { color: 'Natural', hex: '#C0C0C0' },
+        { color: 'Gris', hex: '#e3e4e5' },
         { color: 'Negro', hex: '#1a1a1a' },
         { color: 'Blanco', hex: '#f5f5f5' }
       ],
       specs: [
-        { label: 'Visibilidad', value: '30%' },
-        { label: 'Estética', value: 'Premium' }
+        { label: 'Estética', value: 'Premium' },
+        { label: 'Espesor', value: '0.96mm' }
       ]
     }
   ];
@@ -372,21 +372,7 @@ const Servicios = (): JSX.Element => {
               ))}
             </div>
             
-            {/* Leyenda de colores */}
-            <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-xs text-slate-500 font-mono uppercase tracking-widest">
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-[#C0C0C0] border border-white/20"></div>
-                <span>Natural (Aluminio)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-[#1a1a1a] border border-white/20"></div>
-                <span>Negro (Anodizado)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-[#f5f5f5] border border-white/20"></div>
-                <span>Blanco (Lacado)</span>
-              </div>
-            </div>
+         
           </div>
         </section>
 

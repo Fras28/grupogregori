@@ -32,9 +32,7 @@ const Footer = (): JSX.Element => {
               className=" w-auto mb-6" 
               src={Logo}
             />
-            <p className="text-slate-500 text-sm leading-relaxed font-medium max-w-sm uppercase tracking-tight">
-              Líderes en ingeniería de cerramientos industriales. Calidad certificada y tecnología aplicada a la seguridad de su planta.
-            </p>
+        
           </div>
 
           {/* Soluciones */}
