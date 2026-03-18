@@ -1,10 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import industrial1 from "../../assets/works/Industrial1.jpg"
+import industrial2 from "../../assets/works/Industrial2.jpg"
+import industrial3 from "../../assets/works/Industrial3.png"
+import industrial4 from "../../assets/works/Industrial4.jpeg"
+import industrial5 from "../../assets/works/Industrial5.jpeg"
+import comercial2 from "../../assets/works/comercial1.jpg"
+import comercial3 from "../../assets/works/comercial2.jpg"
+import hogar from "../../assets/works/Hogar.jpg"
+import hogar1 from "../../assets/works/hogar1.jpg"
+import hogar2 from "../../assets/works/hogar2.jpg"
 
 interface Project {
   id: number;
   title: string;
-  category: string;
+  category: 'industrial' | 'comercial' | 'residencial';
   image: string;
   aspect: string;
   location?: string;
@@ -12,7 +22,7 @@ interface Project {
 }
 
 interface Filter {
-  key: string;
+  key: 'todos' | 'industrial' | 'comercial' | 'residencial';
   label: string;
 }
 
@@ -62,74 +72,118 @@ const OptimizedImage = ({
 };
 
 const Gallery = (): JSX.Element => {
-  const [filter, setFilter] = useState<string>('todos');
+  const [filter, setFilter] = useState<Filter['key']>('todos');
   const [visibleCount, setVisibleCount] = useState(6);
 
   useEffect(() => {
     document.title = 'Galería | Grupo Gregori - Trabajos Realizados';
   }, []);
 
+  // ==========================================
+  // 📁 TODAS LAS IMÁGENES ORGANIZADAS
+  // ==========================================
   const projects: Project[] = [
+    // INDUSTRIAL (5 imágenes)
     {
       id: 1,
       title: 'Planta Logística Buenos Aires',
       category: 'industrial',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC8U8-OPje4afkeOzLAV_Mli9XLPgk83XcXRuA0kdNKKySdLTgWL-S0JWw9nOoTP6vIZA1LAZ8QWBigH_kQQUAQiV3_QaJ6LdI9K32RB0IFQWcw3AXiqb_gDXrDgRXVI2IfBBmouhGbESQBP8ny2xO8aOGUUXocPU2rBr2J3bDEhvmEqgmIxnrWRr-PhgBU2-k3w-rMqQlyPtX-vsRM4fvZqgtkxMgS-zQOpYV73V_v5h54KQHl1b84k2jvcOzlYOJSUTItcKcnKJpK',
-      aspect: 'aspect-[4/5]',
+      image: industrial1,
+      aspect: 'aspect-[4/3]',
       location: 'Buenos Aires',
       year: '2023'
     },
     {
       id: 2,
-      title: 'Oficinas Puerto Madero',
-      category: 'corporativo',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuByBseeBusFJ7b_3YnBo4HyPFZ-z5lI0_2HGoJDzqJ1_GoeO_c14R-n7eLe2mMwAP-3zUuKvxJNXiGr91fGSROMv8WrVyT1w3JBSm2eRCd6r3cxIcEFF7n5ZXT2HEE5UNlpBrgNO3AWhT3a_AgvzTe6x1rLr4DzumRiBvQYB2yV3H6B7BPn4e6pny1aguoZE9AJ2Fx4jCQTQrfKyTZijEEo6I4Dyt64bOgtB9u1BANqsEwgyohmUur3s0rqwFM42k1PUQPYt2etWjv7',
-      aspect: 'aspect-square',
-      location: 'Puerto Madero, CABA',
-      year: '2023'
-    },
-    {
-      id: 3,
-      title: 'Residencia Nordelta',
-      category: 'residencial',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC2jCPSLqqap9bSlVhXcq-lml98XhXVAOCa0BztJfGB5OPDo4vGmfgEsfkHaHRz5IWbMBiFGPCmRM7AYhys_D3gxCAak4lsG3M2Ekmt0uD5yO6ZMCL6vvBifM2Ivh3fIQqVJ7aSm_1I_JR6dmQ4IzY2lYwhjoJ2S-hegiQChIkmOg7WjzW6TasMohQRTTgINWeGJ4bEm9wCo8KJl6b4SWWAVo19rhj0zRLqgPggSFP6Dhy4cUSeYpEeD5iercGDtVsCfRIrnGCkR2dT',
-      aspect: 'aspect-[4/3]',
-      location: 'Nordelta, Buenos Aires',
-      year: '2024'
-    },
-    {
-      id: 4,
       title: 'Centro de Distribución Sur',
       category: 'industrial',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDJIe5EmK9F2AfHXNKCY2S1HvfnWWfnf0WmqUhIMDyVypOCFnh-FsOZ4jvMuuER2mqXc49YG6ZHMSZN7RBDdzIUTFfyyJiY8XUKFBuNYBBJkUHjEC6Hh3u0sPSWhO6c5TYgQplWW3Iq8ne4fxkjs6olzagBiFPs7Q2nRhndVs3MexMuTUhdqwbjRfcypX67LKwrRSXEDLxuLs8huSZ8LQlCKUCuleR75brz8rI6Sp4QhMhdMlG8-TkjK2we-Z14Vw594MkgTKNLS98a',
+      image: industrial2,
       aspect: 'aspect-[16/9]',
       location: 'La Plata, Buenos Aires',
       year: '2024'
     },
     {
-      id: 5,
-      title: 'Edificio Tech-Hub',
-      category: 'corporativo',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDjtiZK8fk_SBnSAUgtutDofBRBASk77XkHUZG1JuX9vYB-GNtFjvGV1Sk3QqZ5e2IZd7r8vtNVZltCmMP7-l-kp_bySk2U_gUjkwdW7dKg8i19KJdoXhx7_t4drFWfkkJFs7w0dhDUxwD0vWjI9EoE6a1rn1m69fvJHgbYfaoXZzTKWF-EMf2qEUQtsEXuVCQYiqyx5PmwvgR1uMx-rGJY73N9QGR6P8QGsvsp_lJkgMLGaSMY_Jw6uM_fNCthxvSnpnryGSUurcs_',
+      id: 3,
+      title: 'Depósito Automatizado',
+      category: 'industrial',
+      image: industrial3,
       aspect: 'aspect-[4/5]',
-      location: 'Palermo, CABA',
+      location: 'Pilar, Buenos Aires',
       year: '2023'
     },
     {
+      id: 4,
+      title: 'Fábrica Metalúrgica',
+      category: 'industrial',
+      image: industrial4,
+      aspect: 'aspect-square',
+      location: 'Berazategui, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 5,
+      title: 'Parque Industrial Norte',
+      category: 'industrial',
+      image: industrial5,
+      aspect: 'aspect-[4/3]',
+      location: 'Tigre, Buenos Aires',
+      year: '2023'
+    },
+    
+    // COMERCIAL (3 imágenes)
+    {
       id: 6,
+      title: 'Edificio Tech-Hub',
+      category: 'comercial',
+      image: comercial2,
+      aspect: 'aspect-square',
+      location: 'Palermo, CABA',
+      year: '2024'
+    },
+    {
+      id: 7,
+      title: 'Centro Comercial Plaza',
+      category: 'comercial',
+      image: comercial3,
+      aspect: 'aspect-[16/9]',
+      location: 'Belgrano, CABA',
+      year: '2023'
+    },
+    
+    // RESIDENCIAL (3 imágenes)
+    {
+      id: 8,
+      title: 'Residencia Nordelta',
+      category: 'residencial',
+      image: hogar,
+      aspect: 'aspect-[4/3]',
+      location: 'Nordelta, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 9,
       title: 'Casa Minimalista Pilar',
       category: 'residencial',
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB391F132ytAI4zmEdbcmwBY_-1sgwNWV05qxwV1LpCb8ySKgk6HnclcGjEN24dWyucUFJhON2-KrJa0Xxd2WPLjHVDA11qVh5wHH2dMX-eScX0qe5LtlDbND3gFG5A7a-YnnHBNMe50XjL89Z3vPsju020Vk6OiM7Z1k_r3zv7hHSDmb9WjmAgFiXF64wjGtFQ-7AUzWsFJaN2kLJGRbnfHVbXLvvcP7cFBjmo328vhzohl3HzsGdvqexyitgTyEE8RV4kS-PD-pkm',
+      image: hogar1,
       aspect: 'aspect-square',
       location: 'Pilar, Buenos Aires',
       year: '2024'
+    },
+    {
+      id: 10,
+      title: 'Chalet San Isidro',
+      category: 'residencial',
+      image: hogar2,
+      aspect: 'aspect-[4/5]',
+      location: 'San Isidro, Buenos Aires',
+      year: '2023'
     }
   ];
 
   const filters: Filter[] = [
     { key: 'todos', label: 'Todos' },
     { key: 'industrial', label: 'Industrial' },
-    { key: 'corporativo', label: 'Corporativo' },
+    { key: 'comercial', label: 'Comercial' },
     { key: 'residencial', label: 'Residencial' }
   ];
 
@@ -144,7 +198,13 @@ const Gallery = (): JSX.Element => {
     setVisibleCount(prev => Math.min(prev + 3, filteredProjects.length));
   };
 
-  // Schema para proyectos
+  // Resetear contador al cambiar filtro
+  const handleFilterChange = (newFilter: Filter['key']) => {
+    setFilter(newFilter);
+    setVisibleCount(6);
+  };
+
+  // Schema para proyectos visibles
   const projectsSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -163,6 +223,14 @@ const Gallery = (): JSX.Element => {
         }
       }
     }))
+  };
+
+  // Contador por categoría
+  const countByCategory = {
+    todos: projects.length,
+    industrial: projects.filter(p => p.category === 'industrial').length,
+    comercial: projects.filter(p => p.category === 'comercial').length,
+    residencial: projects.filter(p => p.category === 'residencial').length
   };
 
   return (
@@ -188,7 +256,7 @@ const Gallery = (): JSX.Element => {
               className="text-6xl md:text-8xl lg:text-9xl font-black uppercase leading-none"
               style={{
                 fontFamily: 'Bebas Neue, sans-serif',
-                letterSpacing: '1px' // Aquí definimos el espacio de 1px
+                letterSpacing: '1px'
               }}
             >
               Galería de <br />
@@ -200,23 +268,26 @@ const Gallery = (): JSX.Element => {
           </div>
         </header>
 
-        {/* Filters */}
+        {/* Filters con contadores */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <div className="flex flex-wrap items-center gap-4 border-b border-white/10 pb-6">
             {filters.map((f: Filter) => (
               <button
                 key={f.key}
-                onClick={() => {
-                  setFilter(f.key);
-                  setVisibleCount(6); // Reset al cambiar filtro
-                }}
-                className={`px-6 py-2 font-black uppercase text-sm tracking-widest transition-all ${filter === f.key
+                onClick={() => handleFilterChange(f.key)}
+                className={`px-6 py-2 font-black uppercase text-sm tracking-widest transition-all flex items-center gap-2 ${
+                  filter === f.key
                     ? 'bg-[#E30613] text-white'
                     : 'bg-transparent text-slate-400 hover:text-white border border-transparent hover:border-white/20'
-                  }`}
+                }`}
                 aria-pressed={filter === f.key}
               >
                 {f.label}
+                <span className={`text-xs px-2 py-0.5 rounded-full ${
+                  filter === f.key ? 'bg-white/20' : 'bg-white/10'
+                }`}>
+                  {countByCategory[f.key]}
+                </span>
               </button>
             ))}
           </div>
@@ -273,6 +344,13 @@ const Gallery = (): JSX.Element => {
             ))}
           </div>
 
+          {/* Empty State */}
+          {visibleProjects.length === 0 && (
+            <div className="text-center py-20">
+              <p className="text-slate-500 text-lg">No hay proyectos en esta categoría.</p>
+            </div>
+          )}
+
           {/* Load More Button */}
           {hasMore && (
             <div className="mt-20 text-center">
@@ -280,10 +358,16 @@ const Gallery = (): JSX.Element => {
                 onClick={loadMore}
                 className="px-12 py-4 border-2 border-[#E30613] text-[#E30613] hover:bg-[#E30613] hover:text-white transition-all font-black uppercase tracking-widest text-sm"
               >
-                Cargar más proyectos
+                Cargar más proyectos ({filteredProjects.length - visibleCount} restantes)
               </button>
             </div>
           )}
+
+          {/* Info de total */}
+          <div className="mt-8 text-center text-slate-500 text-sm">
+            Mostrando {visibleProjects.length} de {filteredProjects.length} proyectos
+            {filter !== 'todos' && ` en categoría "${filters.find(f => f.key === filter)?.label}"`}
+          </div>
         </main>
       </div>
     </>

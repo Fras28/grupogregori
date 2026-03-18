@@ -36,6 +36,7 @@ import Servicios from "./components/institutional/Servicios"
 import Gallery from './components/institutional/Gallery';
 import About from './components/institutional/About';
 import Contact from './components/institutional/Contact';
+import { ScrollToTop } from './components/effects/ScrollToTop';
 
 // Console log de versión
 console.log(
@@ -165,6 +166,7 @@ function App(): JSX.Element {
 
   return (
     <BrowserRouter>
+    <ScrollToTop />
       <Routes>
         {/* 🏠 WEB INSTITUCIONAL */}
         <Route element={<InstitutionalLayout />}>

@@ -1,6 +1,19 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 
+
+
+// Imágenes de materiales por categoría (cada una muestra los 3 colores)
+import lamasCiega from "../../assets/materiales/LAMACIEGA.png"
+import lamasPerforadas from "../../assets/materiales/LAMASPERFORADAS.png"
+import lamasWindows from "../../assets/materiales/LAMASWONDOWS.png"
+
+import Hogar from "../../assets/works/hogar1.jpg"
+import Comercial from "../../assets/works/comercial1.jpg"
+import Industrial from "../../assets/works/Industrial1.jpg"
+
+
+
 interface ServiceSpec {
   label: string;
   value: string;
@@ -17,11 +30,21 @@ interface Service {
   applications?: string[];
 }
 
+interface MaterialVariant {
+  color: string;
+  hex: string;
+}
+
 interface Material {
-  code: string;
+  id: string;
   name: string;
-  desc: string;
-  opacity: number;
+  description: string;
+  image: string;
+  variants: MaterialVariant[];
+  specs: {
+    label: string;
+    value: string;
+  }[];
 }
 
 interface MethodologyStep {
@@ -45,7 +68,7 @@ const Servicios = (): JSX.Element => {
         { label: 'Max Span', value: '6.000 MM' },
         { label: 'Load Rating', value: 'CAT 3 WIND' }
       ],
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDRlRlAAQ1h-wSErIAOkCFhyXgSmNx69qEDKXE2hLAXe3TwiRuDw7bRn_LfSbzIPkn6G7NXmi1IJ9KLWLONtsD6xDg-JVZpDGHyopl_2k6_mNOIgjGJXUf0MYjtQstvul9_4cf6uymBZ5ysWFiYbDE6i7UOEMnEKSfScbpKW-kqKjr2SBxDy3ApM24-gvbxhmYyuji0D5KqdR-kuApmoMtEM_3gEZ0ie_atjei3OZDZgptV7mf2xtPlt6LwA-VCPf6m7JaZV-NLWCJ8',
+      image: Hogar,
       applications: ['Viviendas unifamiliares', 'Edificios residenciales', 'Country clubs', 'Condominios']
     },
     {
@@ -57,7 +80,7 @@ const Servicios = (): JSX.Element => {
         { label: 'Duty Cycle', value: '80 CYC/DAY' },
         { label: 'Safety Grade', value: 'LEVEL 4-B' }
       ],
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB1SFvT9JLyIqs_6p3lrnSeM3QEyefDS2YNaIM-ogZqxAH7THAFq84Cr42Lk9U7pk0Ib3XzswoxPaVxXvDarZd7GiorHVUzUSVKWjSuEbRxdcaIuBvSfsI_WD-nhE3Ph4wq1NmEXW-Uwki516tOeO7W1gOcYjw3AWxkDXp3UdacuXycm2HUhJ5E3FiaodzrfvwEOIzvDpWFGAPV93AMxibSbL-4Fyebf43yQT66BPgkKeddwxqbACYpvT4bhkUg7h04nqWDe_06vJQW',
+      image: Comercial,
       reverse: true,
       applications: ['Locales comerciales', 'Oficinas corporativas', 'Centros comerciales', 'Showrooms']
     },
@@ -70,18 +93,60 @@ const Servicios = (): JSX.Element => {
         { label: 'Max Span', value: '12.000 MM' },
         { label: 'Load Rating', value: 'CAT 5 HEAVY' }
       ],
-      image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAlD5Bv_GReRRTq9VwvzjT2OYl7OZF_vr_rIKwpCI1Ohy8G4IrHiDAadW0xBnD-_eUKyFtkUDnvC9wrXfI-fK7rgYJx2BLgno0ydcNBz_Dk5dqr9cV65NbJ1PeEx8jxQPbr1eP7Ale9BfwICICiiTa-tmsh7A0A1NDlzPOriPZSjCrjrF4XWVTj7t6OLBVZLvWPrXzBdzvdpmIJlr5nQXE_g7OT-sDPzRMshETIDpP0DS_jGGHil85tA4gSQCSyThHVZIbw3D0WClZb',
+      image: Industrial,
       applications: ['Centros logísticos', 'Plantas industriales', 'Galpones', 'Puertos y aeropuertos']
     }
   ];
 
+  // ==========================================
+  // 📦 MATERIALES ORGANIZADOS POR CATEGORÍA
+  // ==========================================
   const materials: Material[] = [
-    { code: 'MAT_BK_01', name: 'BLACKOUT', desc: '100% OPACITY', opacity: 30 },
-    { code: 'MAT_SC_05', name: 'SCREEN 5%', desc: 'THERMAL REG', opacity: 50 },
-    { code: 'MAT_VN_09', name: 'VINYL COATED', desc: 'HIGH DURABILITY', opacity: 20 },
-    { code: 'MAT_AC_02', name: 'ACOUSTIC', desc: 'NOISE REDUCTION', opacity: 60 },
-    { code: 'MAT_FR_11', name: 'FIRE RETARDANT', desc: 'CLASS A CERT', opacity: 40 },
-    { code: 'MAT_PF_04', name: 'PERFORATED', desc: 'AIR FLOW MAX', opacity: 30 }
+    {
+      id: 'CIEGA',
+      name: 'Lamas Ciegas',
+      description: 'Máxima privacidad y oscuridad total. Ideal para cerramientos que requieren bloqueo completo de luz.',
+      image: lamasCiega,
+      variants: [
+        { color: 'Natural', hex: '#C0C0C0' },
+        { color: 'Negro', hex: '#1a1a1a' },
+        { color: 'Blanco', hex: '#f5f5f5' }
+      ],
+      specs: [
+        { label: 'Opacidad', value: '100%' },
+        { label: 'Espesor', value: '0.4mm' }
+      ]
+    },
+    {
+      id: 'PERFORADA',
+      name: 'Lamas Perforadas',
+      description: 'Ventilación controlada con privacidad. Perfecto para flujo de aire manteniendo seguridad.',
+      image: lamasPerforadas,
+      variants: [
+        { color: 'Natural', hex: '#C0C0C0' },
+        { color: 'Negro', hex: '#1a1a1a' },
+        { color: 'Blanco', hex: '#f5f5f5' }
+      ],
+      specs: [
+        { label: 'Perforación', value: '15%' },
+        { label: 'Ventilación', value: 'Alta' }
+      ]
+    },
+    {
+      id: 'WINDOWS',
+      name: 'Lamas Windows',
+      description: 'Diseño arquitectónico con visibilidad controlada. Estética moderna para fachadas contemporáneas.',
+      image: lamasWindows,
+      variants: [
+        { color: 'Natural', hex: '#C0C0C0' },
+        { color: 'Negro', hex: '#1a1a1a' },
+        { color: 'Blanco', hex: '#f5f5f5' }
+      ],
+      specs: [
+        { label: 'Visibilidad', value: '30%' },
+        { label: 'Estética', value: 'Premium' }
+      ]
+    }
   ];
 
   const methodology: MethodologyStep[] = [
@@ -165,7 +230,7 @@ const Servicios = (): JSX.Element => {
                   <div className="absolute inset-0 bg-gradient-to-b from-[#E30613]/20 to-transparent animate-pulse"></div>
                   <img 
                     alt={`${service.title} - ${service.division} por Grupo Gregori`}
-                    className="w-full h-full object-cover grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                    className="w-full h-full object-cover  "
                     src={service.image}
                     loading={serviceIndex < 2 ? "eager" : "lazy"}
                     fetchPriority={serviceIndex < 2 ? "high" : "auto"}
@@ -215,35 +280,112 @@ const Servicios = (): JSX.Element => {
           ))}
         </main>
 
-        {/* Materials Catalog */}
+        {/* Materials Catalog - 3 CATEGORÍAS CON VARIANTES DE COLOR */}
         <section className="bg-[#111] py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-16">
               <h2 className="text-4xl font-black tracking-wide mb-2 uppercase" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
                 CATÁLOGO DE MATERIALES
               </h2>
-              <p className="font-mono text-xs text-[#E30613] tracking-widest uppercase">Weave Textures & Technical Specs</p>
+              <p className="font-mono text-xs text-[#E30613] tracking-widest uppercase">
+                3 Tipologías • 3 Colores cada una
+              </p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {materials.map((mat: Material, index: number) => (
-                <div key={index} className="group relative aspect-square bg-zinc-900 border border-white/5 overflow-hidden cursor-pointer">
-                  <div 
-                    className="absolute inset-0 opacity-30 group-hover:opacity-60 transition-opacity"
-                    style={{
-                      backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-                      backgroundSize: '4px 4px'
-                    }}
-                  ></div>
-                  <div className="absolute inset-0 bg-[#E30613]/0 group-hover:bg-[#E30613]/40 transition-all flex items-center justify-center p-4">
-                    <div className="text-center opacity-0 group-hover:opacity-100 transition-all">
-                      <p className="font-bold text-sm">{mat.name}</p>
-                      <p className="text-[10px] font-mono">{mat.desc}</p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {materials.map((mat: Material) => (
+                <div 
+                  key={mat.id} 
+                  className="group relative bg-zinc-900 border border-white/5 overflow-hidden cursor-pointer"
+                >
+                  {/* Imagen principal que muestra los 3 colores */}
+                  <div className="relative aspect-[4/3] overflow-hidden">
+                    <img
+                      src={mat.image}
+                      alt={`${mat.name} - Disponible en ${mat.variants.map(v => v.color).join(', ')}`}
+                      className="absolute inset-0 w-full h-full object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-110"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    
+                    {/* Overlay gradiente */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>
+                    
+                    {/* Badge de categoría */}
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-[#E30613] text-white text-[10px] font-black px-3 py-1 uppercase tracking-widest">
+                        {mat.id}
+                      </span>
                     </div>
                   </div>
-                  <div className="absolute bottom-2 left-2 text-[10px] font-mono text-slate-500">{mat.code}</div>
+                  
+                  {/* Información del material */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-black uppercase mb-2" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
+                      {mat.name}
+                    </h3>
+                    <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+                      {mat.description}
+                    </p>
+                    
+                    {/* Variantes de color */}
+                    <div className="mb-4">
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 mb-3">
+                        Disponible en
+                      </p>
+                      <div className="flex items-center gap-3">
+                        {mat.variants.map((variant) => (
+                          <div 
+                            key={variant.color}
+                            className="flex items-center gap-2 group/color"
+                            title={variant.color}
+                          >
+                            <div 
+                              className="w-8 h-8 rounded-full border-2 border-white/20 shadow-lg transition-transform group-hover/color:scale-110"
+                              style={{ 
+                                backgroundColor: variant.hex,
+                                boxShadow: `0 0 0 2px #0a0a0a, 0 0 0 4px ${variant.hex}`
+                              }}
+                            ></div>
+                            <span className="text-[10px] font-mono text-slate-500 uppercase hidden group-hover/color:inline-block transition-all">
+                              {variant.color}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    {/* Especificaciones técnicas */}
+                    <div className="grid grid-cols-2 gap-3 pt-4 border-t border-white/10">
+                      {mat.specs.map((spec, i) => (
+                        <div key={i}>
+                          <p className="text-[9px] font-mono text-slate-500 uppercase">{spec.label}</p>
+                          <p className="text-sm font-bold text-white">{spec.value}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Hover border */}
+                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-[#E30613] transition-colors duration-300 pointer-events-none"></div>
                 </div>
               ))}
+            </div>
+            
+            {/* Leyenda de colores */}
+            <div className="mt-12 flex flex-wrap items-center justify-center gap-8 text-xs text-slate-500 font-mono uppercase tracking-widest">
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-[#C0C0C0] border border-white/20"></div>
+                <span>Natural (Aluminio)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-[#1a1a1a] border border-white/20"></div>
+                <span>Negro (Anodizado)</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 rounded-full bg-[#f5f5f5] border border-white/20"></div>
+                <span>Blanco (Lacado)</span>
+              </div>
             </div>
           </div>
         </section>
