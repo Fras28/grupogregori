@@ -61,7 +61,7 @@ const Servicios = (): JSX.Element => {
   const services: Service[] = [
     {
       id: '01',
-      division: 'LINEA RESIDENCIAL',
+      division: 'LINEA HOGAR',
       title: 'CONFORT Y ESTILO DOMÉSTICO',
       description: 'Implementación de sistemas de automatización y protección solar para proyectos arquitectónicos de alta gama. Soluciones que combinan estética minimalista con eficiencia térmica superior.',
       specs: [
@@ -133,7 +133,7 @@ const Servicios = (): JSX.Element => {
       ]
     },
     {
-      id: 'WINDOWS',
+      id: 'EXTRUIDO',
       name: 'Lamas Aluminio Extruido',
       description: 'Diseño con estetica moderna y elegante. Ofrece una resistencia inigualable y durabilidad en condiciones extremas',
       image: lamasWindows,
@@ -238,14 +238,12 @@ const Servicios = (): JSX.Element => {
                     width="800"
                     height="500"
                   />
-                  <div className={`absolute bottom-4 ${service.reverse ? 'right-4' : 'left-4'} font-mono text-[10px] text-[#E30613] bg-black/80 px-2 py-1`}>
-                    SYS_AUTH_{service.id}
-                  </div>
+               
                 </div>
               </div>
               
               <div className={`${service.reverse ? 'lg:order-1' : ''}`}>
-                <span className="text-[#E30613] font-mono text-sm mb-4 block">{service.id} / {service.division}</span>
+                <span className="text-[#E30613] font-mono text-sm mb-4 block">{service.division}</span>
                 <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6 uppercase" style={{ fontFamily: 'Bebas Neue, sans-serif' }}>
                   {service.title}
                 </h2>
