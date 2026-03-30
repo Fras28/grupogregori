@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import BgAbour from "../../assets/AboutUs.jpg"
+import KitGrego from "../../assets/KitGrego.png"
 
 interface Value {
   icon: string;
@@ -116,34 +117,17 @@ const About = (): JSX.Element => {
 
           {/* Blueprint Graphic */}
           <div className="relative group">
-            <div className="relative bg-[#1a1a1a] border border-white/10 p-8 min-h-[500px] flex items-center justify-center" style={{
+            <img src={KitGrego} alt="" />
+            {/* <div className="relative bg-[#1a1a1a] border border-white/10 p-8 min-h-[500px] flex items-center justify-center" style={{
               backgroundImage: `radial-gradient(#333 1px, transparent 1px)`,
               backgroundSize: '20px 20px'
             }}>
-              {/* Corner brackets */}
-              <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#E30613]"></div>
-              <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[#E30613]"></div>
-              <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-[#E30613]"></div>
-              <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#E30613]"></div>
-              
-              <svg className="w-full h-full max-w-md opacity-80" viewBox="0 0 200 200">
-                <rect fill="none" height="120" stroke="#666" strokeDasharray="4" strokeWidth="1" width="100" x="50" y="40"/>
-                <path d="M50 40 L150 40 M50 55 L150 55 M50 70 L150 70 M50 85 L150 85 M50 100 L150 100 M50 115 L150 115 M50 130 L150 130 M50 145 L150 145 M50 160 L150 160" stroke="#E30613" strokeWidth="1.5"/>
-                <circle cx="100" cy="30" fill="none" r="10" stroke="#E30613" strokeWidth="1"/>
-                <line stroke="#E30613" strokeWidth="1" x1="40" x2="40" y1="40" y2="160"/>
-                <line stroke="#E30613" strokeWidth="1" x1="35" x2="45" y1="40" y2="40"/>
-                <line stroke="#E30613" strokeWidth="1" x1="35" x2="45" y1="160" y2="160"/>
-                <text fill="#E30613" fontFamily="monospace" fontSize="8" transform="rotate(-90 25,105)" x="25" y="105">H: 4500mm</text>
-                <line stroke="#E30613" strokeWidth="1" x1="50" x2="150" y1="175" y2="175"/>
-                <line stroke="#E30613" strokeWidth="1" x1="50" x2="50" y1="170" y2="180"/>
-                <line stroke="#E30613" strokeWidth="1" x1="150" x2="150" y1="170" y2="180"/>
-                <text fill="#E30613" fontFamily="monospace" fontSize="8" x="85" y="190">W: 3200mm</text>
-              </svg>
+             
               
               <div className="absolute top-4 left-4">
                 <span className="text-[10px] font-mono text-slate-500 uppercase">Fig. 042 / Roller Component v2.1</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
