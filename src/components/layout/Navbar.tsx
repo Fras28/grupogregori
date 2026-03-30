@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../../store/authStore';
 import Logo from "../../assets/LogoNav.webp"
@@ -13,13 +13,32 @@ const Navbar = (): JSX.Element => {
   const location = useLocation();
   const { user } = useAuthStore();
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const lastScrollY = useRef<number>(0);
 
   useEffect(() => {
     const handleScroll = (): void => {
-      setIsScrolled(window.scrollY > 50);
+      const currentScrollY = window.scrollY;
+
+      setIsScrolled(currentScrollY > 50);
+
+      if (currentScrollY < 50) {
+        // Siempre visible en el tope de la página
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current) {
+        // Scrolleando hacia abajo → ocultar
+        setIsVisible(false);
+        setMobileMenuOpen(false);
+      } else {
+        // Scrolleando hacia arriba → mostrar
+        setIsVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -43,6 +62,8 @@ const Navbar = (): JSX.Element => {
         isScrolled 
           ? 'bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/5' 
           : 'bg-transparent'
+      } ${
+        isVisible ? 'translate-y-0' : '-translate-y-full'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

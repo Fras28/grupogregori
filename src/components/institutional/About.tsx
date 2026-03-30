@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import BgAbour from "../../assets/AboutUs.jpg"
 
 interface Value {
   icon: string;
@@ -62,12 +63,12 @@ const About = (): JSX.Element => {
       {/* Hero */}
       <header className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            alt="Industrial Background" 
-            className="w-full h-full object-cover grayscale opacity-20"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRlRlAAQ1h-wSErIAOkCFhyXgSmNx69qEDKXE2hLAXe3TwiRuDw7bRn_LfSbzIPkn6G7NXmi1IJ9KLWLONtsD6xDg-JVZpDGHyopl_2k6_mNOIgjGJXUf0MYjtQstvul9_4cf6uymBZ5ysWFiYbDE6i7UOEMnEKSfScbpKW-kqKjr2SBxDy3ApM24-gvbxhmYyuji0D5KqdR-kuApmoMtEM_3gEZ0ie_atjei3OZDZgptV7mf2xtPlt6LwA-VCPf6m7JaZV-NLWCJ8"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 to-[#0a0a0a]"></div>
+        <img 
+  alt="Industrial Background" 
+  className="w-full h-full object-cover object-left md:object-center md:grayscale-0 grayscale md:opacity-100 "
+  src={BgAbour}
+/>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/0 to-[#0a0a0a]"></div>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
