@@ -43,12 +43,12 @@ const OptimizedImage = ({ src, alt, priority = false }: OptimizedImageProps) => 
   }, []);
 
   return (
-    <>
+    <div className="relative w-full h-full overflow-hidden">
       {!loaded && !error && (
-        <div className="absolute inset-0 bg-[#1a1a1a] animate-pulse" />
+        <div className="aspect-video bg-[#1a1a1a] animate-pulse w-full" />
       )}
       {error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-[#1a1a1a]">
+        <div className="aspect-video flex items-center justify-center bg-[#1a1a1a]">
           <span className="text-slate-600 text-xs">Sin imagen</span>
         </div>
       )}
@@ -57,19 +57,16 @@ const OptimizedImage = ({ src, alt, priority = false }: OptimizedImageProps) => 
         src={src}
         alt={alt}
         className={`
-          absolute inset-0 w-full h-full
-           object-center
+          w-full h-auto block
           transition-all duration-500 ease-out
           group-hover:scale-105
           ${loaded ? 'opacity-100' : 'opacity-0'}
         `}
         loading={priority ? 'eager' : 'lazy'}
-        fetchPriority={priority ? 'high' : 'auto'}
-        decoding={priority ? 'sync' : 'async'}
         onLoad={() => setLoaded(true)}
         onError={() => { setError(true); setLoaded(true); }}
       />
-    </>
+    </div>
   );
 };
 
@@ -146,8 +143,6 @@ const Gallery = (): JSX.Element => {
       </Helmet>
 
       <div className="bg-[#0a0a0a] min-h-screen pt-20">
-
-        {/* Header */}
         <header className="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="border-l-4 border-[#E30613] pl-6">
             <h1
@@ -158,12 +153,11 @@ const Gallery = (): JSX.Element => {
               <span className="text-[#E30613]">Trabajos Realizados</span>
             </h1>
             <p className="mt-8 text-xl text-slate-400 max-w-2xl font-medium">
-              Proyectos de alta envergadura ejecutados bajo los más altos estándares de calidad industrial en toda la región.
+              Proyectos de alta envergadura ejecutados bajo los más altos estándares de calidad industrial.
             </p>
           </div>
         </header>
 
-        {/* Filters */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
           <div className="flex flex-wrap items-center gap-4 border-b border-white/10 pb-6">
             {filters.map((f: Filter) => (
@@ -175,7 +169,6 @@ const Gallery = (): JSX.Element => {
                     ? 'bg-[#E30613] text-white'
                     : 'bg-transparent text-slate-400 hover:text-white border border-transparent hover:border-white/20'
                 }`}
-                aria-pressed={filter === f.key}
               >
                 {f.label}
                 <span className={`text-xs px-2 py-0.5 rounded-full ${filter === f.key ? 'bg-white/20' : 'bg-white/10'}`}>
@@ -186,52 +179,37 @@ const Gallery = (): JSX.Element => {
           </div>
         </div>
 
-        {/* Grid */}
+        {/* Layout Masonry usando Columns de Tailwind */}
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
             {visibleProjects.map((project, index) => (
               <article
                 key={project.id}
-                className="group cursor-pointer"
+                className="group cursor-pointer break-inside-avoid relative"
                 itemScope
                 itemType="https://schema.org/CreativeWork"
               >
-                <meta itemProp="name" content={project.title} />
-                <meta itemProp="dateCreated" content={project.year} />
-
-                {/*
-                  ✅ aspect-[4/3] uniforme — todas las fotos se muestran con
-                     la misma proporción, sin recortes inesperados ni distorsión.
-
-                  ✅ Sin grayscale — imágenes en color completo tal como fueron tomadas.
-
-                  ✅ Overlay from-black/60 (antes /80) — permite ver los colores
-                     reales de la foto sin que el texto quede ilegible.
-
-                  ✅ Sin repeating-gradient "blind effect" — eliminado porque
-                     superponía una trama de líneas que simulaba pixelado.
-                */}
-                <div className="relative aspect-[4/3] bg-[#141414] overflow-hidden">
+                <div className="relative bg-[#141414] overflow-hidden">
                   <OptimizedImage
                     src={project.image}
-                    alt={`${project.title} - Proyecto ${project.category} en ${project.location} por Grupo Gregori`}
+                    alt={`${project.title} - Proyecto ${project.category}`}
                     priority={index < 3}
                   />
 
-                  {/* Overlay solo en la franja inferior para legibilidad del texto */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                  {/* Overlay gradiente para asegurar legibilidad */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  <div className="absolute bottom-0 left-0 p-5 z-10">
+                  <div className="absolute bottom-0 left-0 p-5 z-10 w-full">
                     <span className="bg-[#E30613] text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest mb-2 inline-block">
                       {project.category}
                     </span>
                     <h3
-                      className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white leading-none"
+                      className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white leading-tight"
                       style={{ fontFamily: 'Bebas Neue, sans-serif' }}
                     >
                       {project.title}
                     </h3>
-                    <p className="text-xs text-slate-300 mt-1 font-mono">
+                    <p className="text-[10px] text-slate-300 mt-1 font-mono uppercase">
                       {project.location} • {project.year}
                     </p>
                   </div>
@@ -252,15 +230,10 @@ const Gallery = (): JSX.Element => {
                 onClick={loadMore}
                 className="px-12 py-4 border-2 border-[#E30613] text-[#E30613] hover:bg-[#E30613] hover:text-white transition-all font-black uppercase tracking-widest text-sm"
               >
-                Cargar más proyectos ({filteredProjects.length - visibleCount} restantes)
+                Cargar más proyectos ({filteredProjects.length - visibleCount})
               </button>
             </div>
           )}
-
-          <div className="mt-8 text-center text-slate-500 text-sm">
-            Mostrando {visibleProjects.length} de {filteredProjects.length} proyectos
-            {filter !== 'todos' && ` en categoría "${filters.find(f => f.key === filter)?.label}"`}
-          </div>
         </main>
       </div>
     </>
