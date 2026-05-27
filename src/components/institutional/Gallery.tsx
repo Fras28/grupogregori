@@ -1,15 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import industrial1 from "../../assets/works/Industrial1.jpg"
-import industrial2 from "../../assets/works/Industrial2.jpg"
-import industrial3 from "../../assets/works/Industrial3.png"
-import industrial4 from "../../assets/works/Industrial4.jpeg"
-import industrial5 from "../../assets/works/Industrial5.jpeg"
-import comercial2 from "../../assets/works/comercial1.jpg"
-import comercial3 from "../../assets/works/comercial2.jpg"
-import hogar from "../../assets/works/Hogar.jpg"
-import hogar1 from "../../assets/works/hogar1.jpg"
-import hogar2 from "../../assets/works/hogar2.jpg"
 
 interface Project {
   id: number;
@@ -30,6 +20,14 @@ interface OptimizedImageProps {
   alt: string;
   priority?: boolean;
 }
+
+// Helper para aplicar transformaciones de optimización a URLs de Cloudinary
+// Inserta f_auto,q_auto después de /upload/ para compresión y formato óptimo
+const optimizeCloudinaryUrl = (url: string, width?: number): string => {
+  const transforms = ['f_auto', 'q_auto'];
+  if (width) transforms.push(`w_${width}`);
+  return url.replace('/upload/', `/upload/${transforms.join(',')}/`);
+};
 
 const OptimizedImage = ({ src, alt, priority = false }: OptimizedImageProps) => {
   const [loaded, setLoaded] = useState(false);
@@ -78,17 +76,223 @@ const Gallery = (): JSX.Element => {
     document.title = 'Galería | Grupo Gregori - Trabajos Realizados';
   }, []);
 
+  // ============================================================================
+  // TODAS LAS IMÁGENES DESDE CLOUDINARY - 26 PROYECTOS
+  // ============================================================================
   const projects: Project[] = [
-    { id: 1, title: 'Planta Logística Buenos Aires', category: 'industrial', image: industrial1, location: 'Buenos Aires', year: '2023' },
-    { id: 2, title: 'Centro de Distribución Sur', category: 'industrial', image: industrial2, location: 'La Plata, Buenos Aires', year: '2024' },
-    { id: 3, title: 'Depósito Automatizado', category: 'industrial', image: industrial3, location: 'Pilar, Buenos Aires', year: '2023' },
-    { id: 4, title: 'Fábrica Metalúrgica', category: 'industrial', image: industrial4, location: 'Berazategui, Buenos Aires', year: '2024' },
-    { id: 5, title: 'Parque Industrial Norte', category: 'industrial', image: industrial5, location: 'Tigre, Buenos Aires', year: '2023' },
-    { id: 6, title: 'Edificio Tech-Hub', category: 'comercial', image: comercial2, location: 'Palermo, CABA', year: '2024' },
-    { id: 7, title: 'Centro Comercial Plaza', category: 'comercial', image: comercial3, location: 'Belgrano, CABA', year: '2023' },
-    { id: 8, title: 'Residencia Nordelta', category: 'residencial', image: hogar, location: 'Nordelta, Buenos Aires', year: '2024' },
-    { id: 9, title: 'Casa Minimalista Pilar', category: 'residencial', image: hogar1, location: 'Pilar, Buenos Aires', year: '2024' },
-    { id: 10, title: 'Chalet San Isidro', category: 'residencial', image: hogar2, location: 'San Isidro, Buenos Aires', year: '2023' },
+    // INDUSTRIAL (12 proyectos)
+    {
+      id: 1,
+      title: 'Persiana Ciega Industrial - Agro Fiore',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909499/PERSIANA_CIEGA_AGROFIORE_mpu9b7.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 2,
+      title: 'Persiana Ciega con Puerta de Escape - Credifin Express',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909500/PERSIANA_METALICA_CIEGA_CON_PUERTA_DE_ESCAPE_PARA_NAVE_INDUSTRIAL_CREDIFIN_L_dcaao2.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 3,
+      title: 'Persiana Ciega Industrial - Aldea Romana',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909500/PERSIANA_METALICA_CIEGA_PARA_BAHIA_BLANCA_CORTALEZI_1600_ALDEA_ROMANA_BAHIA_BLANCA_itz5d3.jpg'),
+      location: 'Bahía Blanca, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 4,
+      title: 'Persiana Ciega Nave Industrial - Neuquén',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909500/PERSIANA_METALICA_CIEGA_PARA_NAVE_INDUSTRIAL_EN_NEUQUEN_1_v2thao.jpg'),
+      location: 'Neuquén',
+      year: '2024'
+    },
+    {
+      id: 5,
+      title: 'Instalación Persiana Industrial - Neuquén',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909501/PERSIANA_METALICA_CIEGA_PARA_NAVE_INDUSTRIAL_EN_NEUQUEN_2.j_zyhnco.jpg'),
+      location: 'Neuquén',
+      year: '2024'
+    },
+    {
+      id: 6,
+      title: 'Persiana Ciega Nave Industrial - Neuquén (Exterior)',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909499/PERSIANA_METALICA_CIEGA_PARA_NAVE_INDUSTRIAL_EN_NEUQUEN_3.j_q1qsxt.jpg'),
+      location: 'Neuquén',
+      year: '2024'
+    },
+    {
+      id: 7,
+      title: 'Persiana Ciega Nave Industrial - Neuquén (Interior)',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909500/PERSIANA_METALICA_CIEGA_PARA_NAVE_INDUSTRIAL_EN_NEUQUEN_3.j_1_yn861k.jpg'),
+      location: 'Neuquén',
+      year: '2024'
+    },
+    {
+      id: 8,
+      title: 'Persiana Ciega Industrial - Pehuen-Co',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909499/PERSIANA_METALICA_CIEGA_PEHUEN_-CO_berqqk.jpg'),
+      location: 'Pehuen-Co, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 9,
+      title: 'Persiana Metálica Perforada - Agro Fiore',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909502/PERSIANA_METALICA_PERFORADA_PARA_AGRO_FIORE_sxfmsf.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 10,
+      title: 'Persiana Perforada Doble - Agro Fiore',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909502/PERSIANA_METALICA_PERFORADA_PARA_AGRO_FIORE_2_twm7lb.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 11,
+      title: 'Persiana Perforada Interior - Agro Fiore',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909502/PERSIANA_MET%C3%81LICA_PERFORADA_PARA_AGRO_FIORE_m5swcl.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 12,
+      title: 'Persianas Industriales Doble',
+      category: 'industrial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909506/WhatsApp_Image_2026-05-06_at_13.36.32_swxek7.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+
+    // COMERCIAL (6 proyectos)
+    {
+      id: 13,
+      title: 'Persiana Ciega Comercial - Vicentina Accesorios',
+      category: 'comercial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909499/PERSIANA_METALICA_CIEGA_PARA_BAHIA_BLANCA_VICENTINA_gvgkkh.jpg'),
+      location: 'Bahía Blanca, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 14,
+      title: 'Persiana Ciega Comercial - Colón e Irigoyen',
+      category: 'comercial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909502/PERSIANA_METALICA_CIEGA_USO_COMERCIAL_COLON_E_IRIGOYEN_PUNTA_ALTA_kfze1y.jpg'),
+      location: 'Punta Alta, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 15,
+      title: 'Persiana Metálica Comercial - Colón e Irigoyen',
+      category: 'comercial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909506/PERSIANAS_METALICA_USO_COMERCIAL_COLON_E_IRIGOYEN_jpg_shl4i6.jpg'),
+      location: 'Punta Alta, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 16,
+      title: 'Persiana Metálica Comercial',
+      category: 'comercial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909505/WhatsApp_Image_2026-05-06_at_13.36.27_brdznw.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 17,
+      title: 'Persianas Metálicas Comerciales Múltiples',
+      category: 'comercial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909506/WhatsApp_Image_2026-05-06_at_15.42.41_plt0hu.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 18,
+      title: 'Fachada Comercial Agro Fiore',
+      category: 'comercial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909506/WhatsApp_Image_2026-05-06_at_15.42.42_f59xxa.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+
+    // RESIDENCIAL (8 proyectos)
+    {
+      id: 19,
+      title: 'Persiana Ciega Residencial',
+      category: 'residencial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909504/PERSIANA_METALICA_USO_RESIDENCIAL_u1lmiz.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 20,
+      title: 'Portón Aluminio Extruido - Villa del Mar',
+      category: 'residencial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909504/PORTON_ALUMINIO_EXTRUIDO_USO_RESIDENCIAL_VILLA_DEL_MAR_xhbvi2.jpg'),
+      location: 'Villa del Mar, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 21,
+      title: 'Portón Aluminio Extruido Residencial',
+      category: 'residencial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909504/PORTON_ALUMINIO_EXTRUIDO_USO_RESIDENCIAL_tencck.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 22,
+      title: 'Portón Enrollable Blanco - Punta Alta',
+      category: 'residencial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909504/PORTON_ENROLLABLE_COLOR_BLANCO_COLOCADA_EN_PUNTA_ALTA_ytefbk.jpg'),
+      location: 'Punta Alta, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 23,
+      title: 'Portón Enrollable Blanco Interior - Punta Alta',
+      category: 'residencial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909503/PORTON_ENROLLABLE_COLOR_BLANCO_COLOCADA_EN_PUNTA_ALTA_2_rx010t.jpg'),
+      location: 'Punta Alta, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 24,
+      title: 'Portón Enrollable Negro - Punta Alta',
+      category: 'residencial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909505/PORTON_ENROLLABLE_DE_ALUMINIO_EXTRUIDO_NEGRO_EN_PUNTA_ALTA_hut09y.jpg'),
+      location: 'Punta Alta, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 25,
+      title: 'Portón Enrollable Negro Exterior - Punta Alta',
+      category: 'residencial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909504/PORTON_ENROLLABLE_DE_ALUMINIO_EXTRUIDO_NEGRO_EN_PUNTA_ALTA_2_ir1gmz.jpg'),
+      location: 'Punta Alta, Buenos Aires',
+      year: '2024'
+    },
+    {
+      id: 26,
+      title: 'Portón Enrollable Residencial',
+      category: 'residencial',
+      image: optimizeCloudinaryUrl('https://res.cloudinary.com/ds8p4wwwe/image/upload/v1779909505/WhatsApp_Image_2026-05-06_at_13.36.25_f9mowe.jpg'),
+      location: 'Buenos Aires',
+      year: '2024'
+    },
   ];
 
   const filters: Filter[] = [
