@@ -389,7 +389,7 @@ const Gallery = (): JSX.Element => {
             {visibleProjects.map((project, index) => (
               <article
                 key={project.id}
-                className="group cursor-pointer break-inside-avoid relative"
+                className="group cursor-pointer relative"
                 itemScope
                 itemType="https://schema.org/CreativeWork"
               >
