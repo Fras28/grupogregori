@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { notifications } from '@mantine/notifications';
 
-const API_URL = (import.meta as any).env?.VITE_API_BASE || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_BASE || 'http://localhost:3000';
 
 // ============================================
 // CONFIGURACIÓN MULTI-TENANT
